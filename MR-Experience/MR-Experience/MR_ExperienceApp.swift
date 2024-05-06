@@ -10,8 +10,25 @@ import SwiftUI
 @main
 struct MR_ExperienceApp: App {
     var body: some Scene {
-        WindowGroup {
-            MainView()
+        // WindowGroup(id: "MediaSelectionWindow") {
+        //     MediaSelectionView()
+        // }
+    
+        WindowGroup(id: "DocumentaryWindow") {
+            DocumentaryView()
+                .onAppear() {
+                    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+                        return
+                     }
+                     let geometryRequest = UIWindowScene.GeometryPreferences.Vision(
+                          // addition parameters: size, max size ...
+                          resizingRestrictions: .uniform // maintain aspect ratio when resizing
+                     )
+                                    
+                     windowScene.requestGeometryUpdate(geometryRequest)
+                }
         }
+        .windowStyle(.plain)
+        .defaultSize(width: 1, height: 0.4, depth: 0.0, in: .meters)
     }
 }
