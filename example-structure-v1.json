@@ -1,0 +1,55 @@
+{
+    "3d_objects": {
+        "sphinx_1": {
+            "file_path": "path/to/sphinx_1",
+            "object_title": "The Sphinx before damage (displayed above or below 3d object?)"
+        },
+        "sphinx_2": {
+            "file_path": "path/to/sphinx_2",
+            "object_title": "The Sphinx after damage (displayed above or below 3d object?)"
+        },
+        "pyramids_insides": {
+            "file_path": "path/to/pyramids",
+            "object_title": "Probably irrelevant for 3d maps"
+        },
+        "sarcophagus": {
+            "file_path": "path/to/sarcophagus",
+            "object_title": "The sarcophagus of someone the 3rd"
+        }
+    },
+    "maps": {
+        "egypt_location": {
+            "type": 0,
+            "location": {
+                "lat": 0.123142,
+                "long": 1.2324
+            }
+        },
+        "inside_the_pyramids":{
+            "type": 1,
+            "3d_model": "pyramids_insides"
+        }
+    },
+    "timestamps": {
+        "0": {
+            "info": "This is an info text to be shown in the info-box",
+            "map": "egypt_location",
+            "3d_object": "sphinx_1"
+        },
+        "36780": {
+            "info": "Inside the pyramids you may find the sarcophagus of an ancient egyptian ruler",
+            "map": "pyramids_insides",
+            "3d_object": "sarcophagus"
+        },
+        "106790": {
+            "info": "Today the nose of the sphinx is damaged",
+            "map": "egypt_location",
+            "3d_object": "sphinx_2"
+        }
+    },
+    "timeline": {
+        "Sphinx constructed": 24314,
+        "Pyramids constructed": 120532,
+        "Sphinx damaged": 180572
+    }
+}
