@@ -10,9 +10,9 @@ import SwiftUI
 @main
 struct MR_ExperienceApp: App {
     var body: some Scene {
-        // WindowGroup(id: "MediaSelectionWindow") {
-        //     MediaSelectionView()
-        // }
+        WindowGroup(id: "MediaSelectionWindow") {
+             MediaSelectionView()
+        }
     
         WindowGroup(id: "DocumentaryWindow") {
             DocumentaryView()
@@ -29,6 +29,6 @@ struct MR_ExperienceApp: App {
                 }
         }
         .windowStyle(.plain)
-        .defaultSize(width: 1, height: 0.4, depth: 0.0, in: .meters)
+        .defaultSize(width: 1.2, height: 0.48, depth: 0.0, in: .meters)
     }
 }
