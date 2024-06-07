@@ -17,7 +17,8 @@ struct DocumentaryView: View {
                 HStack(spacing: 25) {
                     ContextMap()
                         .glassBackgroundEffect()
-                    Documentary()
+                    // added testvideo, needs to be replaced dynamically
+                    Documentary(videoFileName: "cleopatra_testvideo")
                         .relativeProposed(width: 0.6)
                         .layoutPriority(1)
                         .glassBackgroundEffect()
