@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5EBF391F2C13552D0078DE05 /* cleopatra_testvideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5EBF391E2C13552D0078DE05 /* cleopatra_testvideo.mp4 */; };
+		5EBF39202C13552D0078DE05 /* cleopatra_testvideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5EBF391E2C13552D0078DE05 /* cleopatra_testvideo.mp4 */; };
 		5ED887D72BE945A300649820 /* DocumentaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED887D62BE945A300649820 /* DocumentaryView.swift */; };
 		5ED887DA2BE9618800649820 /* RelativeSizeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED887D92BE9618800649820 /* RelativeSizeLayout.swift */; };
 		5ED887E22BE9832E00649820 /* Sphinx3D.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5ED887E12BE9832E00649820 /* Sphinx3D.usdz */; };
@@ -34,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5EBF391E2C13552D0078DE05 /* cleopatra_testvideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = cleopatra_testvideo.mp4; sourceTree = "<group>"; };
 		5ED887D62BE945A300649820 /* DocumentaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentaryView.swift; sourceTree = "<group>"; };
 		5ED887D92BE9618800649820 /* RelativeSizeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeSizeLayout.swift; sourceTree = "<group>"; };
 		5ED887E12BE9832E00649820 /* Sphinx3D.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Sphinx3D.usdz; sourceTree = "<group>"; };
@@ -72,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5EBF391D2C1355140078DE05 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				5EBF391E2C13552D0078DE05 /* cleopatra_testvideo.mp4 */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
 		5ED887D82BE945AC00649820 /* DocumentaryViewElements */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +143,7 @@
 		94C03FF92BDBFDD400DB6F9F /* MR-Experience */ = {
 			isa = PBXGroup;
 			children = (
+				5EBF391D2C1355140078DE05 /* Video */,
 				94C03FFE2BDBFDD400DB6F9F /* MR_ExperienceApp.swift */,
 				5EDC4CB02BE500AA0099F76D /* Controllers */,
 				5EDC4CAF2BE500A40099F76D /* Views */,
@@ -254,6 +266,7 @@
 				94C040062BDBFDD500DB6F9F /* Preview Assets.xcassets in Resources */,
 				5ED887E22BE9832E00649820 /* Sphinx3D.usdz in Resources */,
 				94C040032BDBFDD500DB6F9F /* Assets.xcassets in Resources */,
+				5EBF391F2C13552D0078DE05 /* cleopatra_testvideo.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +274,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EBF39202C13552D0078DE05 /* cleopatra_testvideo.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

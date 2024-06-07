@@ -17,7 +17,15 @@ struct DocumentaryView: View {
                 HStack(spacing: 25) {
                     ContextMap()
                         .glassBackgroundEffect()
-                    Documentary()
+                    
+                    // Dictionary mapping timestamps to actions. TODO: This is only a demo and should be read dynamically from a json file.
+                    let timestamps: [Int: String] = [
+                        10: "Update View A",
+                        30: "Update View B"
+                    ]
+                    
+                    // added testvideo and timestamps, needs to be replaced dynamically
+                    Documentary(videoFileName: "cleopatra_testvideo", timestamps: timestamps)
                         .relativeProposed(width: 0.6)
                         .layoutPriority(1)
                         .glassBackgroundEffect()
