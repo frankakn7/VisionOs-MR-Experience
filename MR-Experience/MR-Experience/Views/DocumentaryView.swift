@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct DocumentaryView: View {
+    let mediaItem: MediaItem
+    
     var body: some View {
         VStack(spacing: 25) {
                 Timeline()
@@ -41,6 +43,6 @@ struct DocumentaryView: View {
     }
 }
 
-#Preview {
-    DocumentaryView()
-}
+// #Preview {
+//     DocumentaryView()
+// }

@@ -10,7 +10,7 @@ import RealityKit
 import RealityKitContent
 
 // Define the model for the media selection item
-struct MediaItem: Identifiable, Codable {
+struct MediaItem: Identifiable, Codable, Hashable {
     let id = UUID()
     let image: String
     let title: String
@@ -29,8 +29,11 @@ struct MediaData: Codable {
 }
 
 struct MediaSelectionView: View {
+    @ObservedObject var appState: AppState
+    
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissWindow) private var dismissWindow
+    @State private var selectedMediaItem: MediaItem?
     
     @State private var mediaItems: [MediaItem] = []
     
@@ -57,11 +60,13 @@ struct MediaSelectionView: View {
                 // Iterate over all media items and display them
                 ForEach(mediaItems) { item in
                     MediaSelectionElement(
-                        image: item.image,
-                        title: item.title,
-                        description: item.description,
-                        openWindow: { openWindow(id: "DocumentaryWindow") },
-                        dismissWindow: { dismissWindow(id: "MediaSelectionWindow") }
+                        mediaItem: item,
+                        openAndDismiss: { mediaItem in
+                            self.selectedMediaItem = mediaItem
+                            Task {
+                                await openAndDismiss(mediaItem: mediaItem)
+                            }
+                        }
                     )
                     .frame(height: 400)
                 }
@@ -87,34 +92,56 @@ struct MediaSelectionView: View {
             print("JSON file not found")
         }
     }
+    
+    // Helper function for window opening/closing
+    @MainActor
+    private func openAndDismiss(mediaItem: MediaItem) async {
+        appState.selectedMediaItem = mediaItem
+        
+        await openWindowAsync()
+        dismissWindow()
+    }
+    
+    // Helper function for window opening/closing
+    @MainActor
+    private func openWindowAsync() async {
+        await withCheckedContinuation { continuation in
+            openWindow(id: "DocumentaryWindow")
+            DispatchQueue.main.async {
+                continuation.resume()
+            }
+        }
+    }
+    
+    // Public method to get the selected media item
+    func getSelectedMediaItem() -> MediaItem? {
+        return selectedMediaItem
+    }
 }
 
 struct MediaSelectionElement: View {
     // Arguments passed to this view
-    var image: String
-    var title: String
-    var description: String
-    var openWindow: () -> Void
-    var dismissWindow: () -> Void
+    var mediaItem: MediaItem
+    var openAndDismiss: (_ mediaItem: MediaItem) -> Void
     
     var body: some View {
         Button(action: {
             Task {
                 // When MediaSelectionElement is clicked, wait for documentary to open before closing this window
-                await openAndDismiss()
+                openAndDismiss(mediaItem)
             }
         }) {
             VStack {
-                Image(image)
+                Image(mediaItem.image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(height: 150)
                     .clipped()
-                Text(title)
+                Text(mediaItem.title)
                     .font(.title)
                     .padding(EdgeInsets(top: 10, leading: 14, bottom: 2, trailing: 14))
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text(description)
+                Text(mediaItem.description)
                     .padding(EdgeInsets(top: 2, leading: 14, bottom: 10, trailing: 14))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Spacer()
@@ -131,28 +158,10 @@ struct MediaSelectionElement: View {
         
         
     }
-    
-    // Helper function for window opening/closing
-    @MainActor
-    private func openAndDismiss() async {
-        await openWindowAsync()
-        dismissWindow()
-    }
-    
-    // Helper function for window opening/closing
-    @MainActor
-    private func openWindowAsync() async {
-        await withCheckedContinuation { continuation in
-            openWindow()
-            DispatchQueue.main.async {
-                continuation.resume()
-            }
-        }
-    }
 }
 
 
 
-#Preview(windowStyle: .automatic) {
-    MediaSelectionView()
-}
+// #Preview(windowStyle: .automatic) {
+//     MediaSelectionView()
+// }

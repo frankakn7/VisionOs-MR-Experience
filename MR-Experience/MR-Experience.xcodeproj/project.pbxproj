@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E0F65AD2C1C7683004CA8E5 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F65AC2C1C7683004CA8E5 /* AppState.swift */; };
 		5EBF391F2C13552D0078DE05 /* cleopatra_testvideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5EBF391E2C13552D0078DE05 /* cleopatra_testvideo.mp4 */; };
 		5EBF39202C13552D0078DE05 /* cleopatra_testvideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5EBF391E2C13552D0078DE05 /* cleopatra_testvideo.mp4 */; };
 		5EBF39222C1360EE0078DE05 /* documentaries.json in Resources */ = {isa = PBXBuildFile; fileRef = 5EBF39212C1360EE0078DE05 /* documentaries.json */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E0F65AC2C1C7683004CA8E5 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		5EBF391E2C13552D0078DE05 /* cleopatra_testvideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = cleopatra_testvideo.mp4; sourceTree = "<group>"; };
 		5EBF39212C1360EE0078DE05 /* documentaries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = documentaries.json; sourceTree = "<group>"; };
 		5EBF39252C1363330078DE05 /* markers_example.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = markers_example.json; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		5EDC4CAE2BE5009F0099F76D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5E0F65AC2C1C7683004CA8E5 /* AppState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EDC4CB82BE503D80099F76D /* Information.swift in Sources */,
+				5E0F65AD2C1C7683004CA8E5 /* AppState.swift in Sources */,
 				5EDC4CB42BE503BE0099F76D /* Timeline.swift in Sources */,
 				94C040012BDBFDD400DB6F9F /* MediaSelectionView.swift in Sources */,
 				5EDC4CBB2BE503F20099F76D /* ThreeDObject.swift in Sources */,
