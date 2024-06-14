@@ -10,26 +10,29 @@ import RealityKit
 import RealityKitContent
 
 // Define the model for the media selection item
-struct MediaItem: Identifiable {
+struct MediaItem: Identifiable, Codable {
     let id = UUID()
     let image: String
     let title: String
     let description: String
+    let markers: String?
+    let videofile: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case image, title, description, markers, videofile
+    }
+}
+
+// Create a structure to match the JSON file
+struct MediaData: Codable {
+    let documentaries: [MediaItem]
 }
 
 struct MediaSelectionView: View {
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissWindow) private var dismissWindow
     
-    // Data for media items
-    let mediaItems: [MediaItem] = [
-        MediaItem(image: "cleopatra", title: "Cleopatra: The Story of the Queen of Egypt", description: "A figure whose name and legacy is burned into the minds of billions. Coming from a tenacious Greek Macedonian family, she had to fight and even kill for her place on the throne, a noble attempt to save a failing Egypt."),
-        MediaItem(image: "jfk", title: "Assassination of John F. Kennedy", description: "Kennedy's assassination is still the subject of widespread debate and has spawned many conspiracy theories and alternative scenarios; polls found that a majority of Americans believed there was a conspiracy."),
-        MediaItem(image: "medusa", title: "Greek Mythology: God and Goddesses", description: "Greek Mythology is the body of myths and teachings that belong to the ancient Greeks, concerning their gods and heroes, the nature of the world, and the origins and significance of their own cult and ritual practices."),
-        MediaItem(image: "medicifamily", title: "The Medici: Godfathers of the Renaissance", description: "From a small Italian community in 15th-century Florence, the Medici family would rise to rule Europe in many ways. Using charm, patronage, skill, duplicity and ruthlessness, they would amass unparalleled wealth and unprecedented power."),
-        MediaItem(image: "shakespeare", title: "Shakespeare: Rise of a Genius", description: "Taking a deep dive into Shakespeare’s life story, the place and time he inhabited and the work he produced, the series reveals a dangerous and exciting world filled with bitter rivalries, rebellion, murder and deadly plague, that ignited and nourished his creative genius."),
-        MediaItem(image: "watertap", title: "The Last Resources", description: "Water is now becoming a scarce resource. Throughout man's history, stretching back to prehistoric times, no one would have thought that water would disappear and dry up. It was a resource that no one ever really worried about."),
-    ]
+    @State private var mediaItems: [MediaItem] = []
     
     // Define the grid layout
     let columns = [
@@ -67,8 +70,24 @@ struct MediaSelectionView: View {
         }
         .padding()
         .background()
+        .onAppear(perform: loadMediaItems) // Load media items when the view appears
     }
+    
+    // Load and decode the JSON file
+    func loadMediaItems() {
+        if let url = Bundle.main.url(forResource: "documentaries", withExtension: "json") {
+            do {
+                let data = try Data(contentsOf: url)
+                let decodedData = try JSONDecoder().decode(MediaData.self, from: data)
+                self.mediaItems = decodedData.documentaries
+            } catch {
+                print("Failed to load or decode JSON: \(error)")
+            }
+        } else {
+            print("JSON file not found")
+        }
     }
+}
 
 struct MediaSelectionElement: View {
     // Arguments passed to this view
