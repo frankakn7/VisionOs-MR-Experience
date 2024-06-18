@@ -7,39 +7,115 @@
 
 import SwiftUI
 
+/// A view representing a documentary experience for a specific `MediaItem`.
 struct DocumentaryView: View {
-    let mediaItem: MediaItem
+    let mediaItem: MediaItem                                    // The media item associated with this documentary view
+    @State private var markerData: MarkerData?                  // State variable to hold marker data parsed from JSON
+    @State private var currentInformation: String = ""          // Currently displayed information text
+    @State private var current3DPath: String = ""               // Path to currently displayed 3D object
+    @State private var currentMapElement: MapElement?           // MapElement containing map information for currently displayed map
     
     var body: some View {
         VStack(spacing: 25) {
-                Timeline()
-                .relativeProposed(height: 0.20)
-                .layoutPriority(1)
-                .glassBackgroundEffect()
-                HStack(spacing: 25) {
-                    ContextMap()
+            // Check if marker data is loaded
+            if let markerData = markerData {
+                // Only load subviews if the video file path is set
+                if mediaItem.videofile != nil {
+                    // Timeline view showing timestamps at top of view
+                    Timeline(timestamps: markerData.timestamps)
+                        .relativeProposed(height: 0.20)
+                        .layoutPriority(1)
                         .glassBackgroundEffect()
                     
-                    // Dictionary mapping timestamps to actions. TODO: This is only a demo and should be read dynamically from a json file.
-                    let timestamps: [Int: String] = [
-                        10: "Update View A",
-                        30: "Update View B"
-                    ]
-                    
-                    // added testvideo and timestamps, needs to be replaced dynamically
-                    Documentary(videoFileName: "cleopatra_testvideo", timestamps: timestamps)
+                    // Horizontal stack for context map and documentary content
+                    HStack(spacing: 25) {
+                        // Context map view if available, otherwise display a message
+                        if let mapElement = currentMapElement {
+                            ContextMap(mapElement: mapElement)
+                                .glassBackgroundEffect()
+                        } else {
+                            Text("No map set")
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .glassBackgroundEffect()
+                        }
+                        
+                        // Main documentary view displaying video
+                        // Pass state variables to update them when video markers are reached
+                        Documentary(mediaItem: mediaItem,
+                                    markers: markerData,
+                                    currentInformation: $currentInformation,
+                                    current3DPath: $current3DPath,
+                                    currentMapElement: $currentMapElement)
                         .relativeProposed(width: 0.6)
                         .layoutPriority(1)
                         .glassBackgroundEffect()
-                    VStack(spacing: 25) {
-                        Information()
-                            .glassBackgroundEffect()
-                        ThreeDObject()
-                            .relativeProposed(height: 0.5)
-                            .layoutPriority(1)
+                        
+                        // Vertical stack for information text and 3D object view
+                        VStack(spacing: 25) {
+                            // Information text related to the current timestamp
+                            Information(informationText: currentInformation)
+                                .glassBackgroundEffect()
+                            
+                            // 3D object view based on the current 3D path
+                            ThreeDObject(objectFileName: current3DPath)
+                                .relativeProposed(height: 0.5)
+                                .layoutPriority(1)
+                        }
+                        
                     }
+                } else {
+                    // Display message when video path is not set
+                    Text("Video path not set")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .glassBackgroundEffect()
                 }
+            } else {
+                // Show loading indicator while markers are being loaded
+                ProgressView("Loading...")
+                    .onAppear {
+                        // Load and parse markers JSON
+                        loadMarkers()
+                    }
             }
+        }
+    }
+    
+    /// Loads and parses marker data from a JSON file of the associated `MediaItem`
+    private func loadMarkers() {
+        guard let markersFileName = mediaItem.markers else {
+            return
+        }
+        
+        // Remove ".json" extension if it exists in the markers file name
+        let markersFilePath = markersFileName.replacingOccurrences(of: ".json", with: "")
+        
+        // Split path into components to extract directory and filename
+        let pathComponents = markersFilePath.split(separator: "/")
+        let fileName = String(pathComponents.last ?? "")
+        let directory = pathComponents.dropLast().joined(separator: "/")
+        
+        // Print debug information about the attempted markers JSON load
+        print("Attempting to load markers JSON from path: \(directory)/\(fileName).json")
+        
+        // Attempt to load JSON data from the specified file path
+        if let url = Bundle.main.url(forResource: fileName, withExtension: "json", subdirectory: directory) {
+            do {
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                markerData = try decoder.decode(MarkerData.self, from: data)
+                
+                // Set initial information, 3D path, and map element based on the first timestamp
+                if let initialTimestamp = markerData?.timestamps["0"] {
+                    currentInformation = initialTimestamp.information
+                    current3DPath = initialTimestamp._3dpath
+                    currentMapElement = markerData?.mapElements[String(initialTimestamp.map_content)]
+                }
+            } catch {
+                print("Failed to load or decode markers JSON: \(error)")
+            }
+        } else {
+            print("Markers JSON file not found at path: \(directory)/\(fileName).json")
+        }
     }
 }
 

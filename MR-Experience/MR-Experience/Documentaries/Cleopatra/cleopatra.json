@@ -1,0 +1,35 @@
+{
+    "timestamps": {
+        "0": {
+            "information": "Cleopatra was the last active ruler of the Ptolemaic Kingdom of Egypt, nominally survived as pharaoh by her son Caesarion. She was also a diplomat, naval commander, polyglot, and medical author.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 0,
+            "map_content": 0
+        },
+        "10": {
+            "information": "She was born in Alexandria, Egypt, in 69 BC, and died there in 30 BC. Her death marked the end of the Hellenistic period and the beginning of the Roman era in the eastern Mediterranean.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 1,
+            "map_content": 1
+        }
+    },
+    "timelineElements": {
+        "0": {
+            "text": "Born in Alexandria, Egypt",
+            "datetime": "69 BC"
+        },
+        "1": {
+            "text": "Death of Cleopatra",
+            "datetime": "30 BC"
+        }
+    },
+    "mapElements": {
+        "0": {
+            "type": "map",
+            "location": {
+                "lat": 31.2001,
+                "long": 29.9187
+            }
+        }
+    }
+}

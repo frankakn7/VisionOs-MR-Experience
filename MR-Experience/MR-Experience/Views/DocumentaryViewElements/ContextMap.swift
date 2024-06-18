@@ -9,6 +9,8 @@ import SwiftUI
 import MapKit
 
 struct ContextMap: View {
+    let mapElement: MapElement
+    
     @State private var position = MapCameraPosition.region(
         MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 30.0131, longitude: 31.2089),
@@ -28,6 +30,6 @@ struct ContextMap: View {
     }
 }
 
-#Preview {
-    ContextMap()
-}
+// #Preview {
+//     ContextMap()
+// }

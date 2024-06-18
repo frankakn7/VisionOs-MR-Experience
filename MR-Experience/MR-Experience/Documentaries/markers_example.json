@@ -2,18 +2,18 @@
     "timestamps": {
         "0": {
             "information": "Text",
-            "3dpath": "Path to 3D object",
+            "_3dpath": "Path to 3D object",
             "timeline_highlight": 0,
             "map_content": 0
         },
         "10": {
             "information": "Text",
-            "3dpath": "Path to 3D object",
+            "_3dpath": "Path to 3D object",
             "timeline_highlight": 1,
             "map_content": 1
         }
     },
-    "timeline_elements": {
+    "timelineElements": {
         "0": {
             "text": "Text",
             "datetime": "dd.mm.YYYY or hh:mm"
@@ -23,7 +23,7 @@
             "datetime": "dd.mm.YYYY or hh:mm"
         }
     },
-    "map_elements": {
+    "mapElements": {
         "0": {
             "type": "map",
             "location": {

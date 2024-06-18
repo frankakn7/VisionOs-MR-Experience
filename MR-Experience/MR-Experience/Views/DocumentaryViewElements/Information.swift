@@ -8,22 +8,17 @@
 import SwiftUI
 
 struct Information: View {
+    let informationText: String
+    
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Great Sphinx of Giza")
-                .font(.title)
-                .multilineTextAlignment(.leading)
-                .padding(.bottom, 5)
-            Text("Location: Giza, Egypt\n" +
-                 "Built: c. 2558–2532 BC\n" +
-                 "Material: limestone")
-                .multilineTextAlignment(.leading)
+            Text(informationText)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .padding()
     }
 }
 
-#Preview {
-    Information()
-}
+// #Preview {
+//     Information()
+// }

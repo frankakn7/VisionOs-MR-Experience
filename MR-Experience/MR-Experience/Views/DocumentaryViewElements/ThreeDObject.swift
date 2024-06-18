@@ -9,6 +9,8 @@ import SwiftUI
 import _RealityKit_SwiftUI
 
 struct ThreeDObject: View {
+    let objectFileName: String
+    
     var body: some View {
         Model3D(named: "Sphinx3D") { model in
              model
@@ -25,6 +27,6 @@ struct ThreeDObject: View {
     }
 }
 
-#Preview {
-    ThreeDObject()
-}
+// #Preview {
+//     ThreeDObject()
+// }
