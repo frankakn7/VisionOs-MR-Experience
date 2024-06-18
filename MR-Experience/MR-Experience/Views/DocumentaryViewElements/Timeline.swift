@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Timeline: View {
+    let timestamps: [String: Timestamp]
+    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 100) {
@@ -119,6 +121,6 @@ struct Timeline: View {
     }
 }
 
-#Preview {
-    Timeline()
-}
+// #Preview {
+//     Timeline()
+// }
