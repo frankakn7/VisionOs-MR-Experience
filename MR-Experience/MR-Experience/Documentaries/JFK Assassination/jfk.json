@@ -1,0 +1,143 @@
+{
+    "timestamps": {
+        "0": {
+            "information": "Overview",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 0,
+            "map_content": 0
+        },
+        "19": {
+            "information": "President was in Texas on a campaign tour and gave speech.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 0,
+            "map_content": 1
+        },
+        "40": {
+            "information": "President arrived in Dallas.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 1,
+            "map_content": 1
+        },
+        "60": {
+            "information": "Join the Parade.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 2,
+            "map_content": 1
+        },
+        "93": {
+            "information": "President was shot.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 3,
+            "map_content": 1
+        },
+        "135": {
+            "information": "President was dead.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 4,
+            "map_content": 1
+        },
+        "180": {
+            "information": "The suspect was arrested.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 5,
+            "map_content": 1
+        },
+        "193": {
+            "information": "Johnson was sworn in as president",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 6,
+            "map_content": 1
+        },
+        "248": {
+            "information": "The president’s body lies in repose.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 7,
+            "map_content": 1
+        },
+        "318": {
+            "information": "Oswald was being transferred to the country jail and then dead.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 8,
+            "map_content": 1
+        },
+        "336": {
+            "information": "President’s casket lies in state in the U.S. Capitol.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 8,
+            "map_content": 1
+        },
+        "364": {
+            "information": "Funeral was held and where.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 9,
+            "map_content": 1
+        },
+        "447": {
+            "information": "In west Germany, there was an out poring of grief for kennedy.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 9,
+            "map_content": 1
+        },
+        "584": {
+            "information": "End ...",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 10,
+            "map_content": 1
+        }
+    },
+    "timelineElements": {
+        "0": {
+            "text": "Arrive in Texas",
+            "datetime": "22 Nov, 1963"
+        },
+        "1": {
+            "text": "Arrive in Dallas",
+            "datetime": "22 Nov, 1963"
+        },
+        "2": {
+            "text": "Join the Parade",
+            "datetime": "22 Nov, 1963"
+        },
+        "3": {
+            "text": "shot",
+            "datetime": "22 Nov, 1963"
+        },
+        "4": {
+            "text": "dead",
+            "datetime": "22 Nov, 1963"
+        },
+        "5": {
+            "text": "The suspect was arrested",
+            "datetime": "22 Nov, 1963"
+        },
+        "6": {
+            "text": "Johnson was sworn in as president",
+            "datetime": "22 Nov, 1963"
+        },
+        "7": {
+            "text": "lies in repose",
+            "datetime": "23 Nov, 1963"
+        },
+        "8": {
+            "text": "Oswald's End",
+            "datetime": "24 Nov, 1963"
+        },
+        "9": {
+            "text": "Funeral",
+            "datetime": "25 Nov, 1963"
+        },
+        "10": {
+            "text": "New president adresses the U.S. Congress",
+            "datetime": "26 Nov, 1963"
+        }
+    },
+    "mapElements": {
+        "0": {
+            "type": "map",
+            "location": {
+                "lat": 31.2001,
+                "long": 29.9187
+            }
+        }
+    }
+}
