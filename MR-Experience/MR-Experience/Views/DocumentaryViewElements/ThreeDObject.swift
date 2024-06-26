@@ -12,7 +12,7 @@ struct ThreeDObject: View {
     let objectFileName: String
     
     var body: some View {
-        Model3D(named: "Sphinx3D") { model in
+        Model3D(named: objectFileName) { model in
              model
                  .resizable()
                  .aspectRatio(contentMode: .fit)

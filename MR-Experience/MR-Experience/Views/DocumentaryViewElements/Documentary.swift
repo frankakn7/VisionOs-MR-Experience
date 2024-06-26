@@ -22,11 +22,20 @@ struct VideoPlayerView: UIViewControllerRepresentable {
         // Add observer to track time changes and trigger actions based on timestamps
         player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1), queue: nil) { time in
             let currentTime = Int(time.seconds)
+            let availableTimestamps = Array(markerData.timestamps.keys)
+            var maxTimestamp = 0
             
-            // Check if current time matches any timestamp in markerData.timestamps
-            if let timestamp = markerData.timestamps[String(currentTime)] {
-                print("Marker triggered at second \(currentTime): \(timestamp.information)")
-                // Update Views
+            // find biggest timestamp that is <= currentTime
+            for el in availableTimestamps {
+                if (Int(el) != nil) {
+                    if (Int(el)! <= currentTime && Int(el)! > maxTimestamp) {
+                        maxTimestamp = Int(el)!
+                    }
+                }
+            }
+            
+            // display content
+            if let timestamp = markerData.timestamps[String(maxTimestamp)] {
                 DispatchQueue.main.async {
                     currentInformation = timestamp.information
                     current3DPath = timestamp._3dpath
