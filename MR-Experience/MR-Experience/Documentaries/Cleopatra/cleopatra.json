@@ -6,10 +6,58 @@
             "timeline_highlight": 0,
             "map_content": 0
         },
-        "10": {
-            "information": "She was born in Alexandria, Egypt, in 69 BC, and died there in 30 BC. Her death marked the end of the Hellenistic period and the beginning of the Roman era in the eastern Mediterranean.",
+        "12": {
+            "information": "Introduce Bloodline.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 0,
+            "map_content": 1
+        },
+        "90": {
+            "information": "Events of her Early years.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 0,
+            "map_content": 1
+        },
+        "164": {
+            "information": "After the Death of her Father.",
             "_3dpath": "sphinx",
             "timeline_highlight": 1,
+            "map_content": 1
+        },
+        "313": {
+            "information": "In Exile.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 2,
+            "map_content": 1
+        },
+        "378": {
+            "information": "Cleopatra and Julious Caesar.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 3,
+            "map_content": 1
+        },
+        "478": {
+            "information": "Death of Julious Caesar.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 4,
+            "map_content": 1
+        },
+        "539": {
+            "information": "Mark Antony.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 5,
+            "map_content": 1
+        },
+        "636": {
+            "information": "Battle of Actium.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 6,
+            "map_content": 1
+        },
+        "734": {
+            "information": "Death of Cleopatra.",
+            "_3dpath": "sphinx",
+            "timeline_highlight": 7,
             "map_content": 1
         }
     },
@@ -19,6 +67,30 @@
             "datetime": "69 BC"
         },
         "1": {
+            "text": "Become Rulers with Her brother",
+            "datetime": ".. BC"
+        },
+        "2": {
+            "text": "In Exile",
+            "datetime": ".. BC"
+        },
+        "3": {
+            "text": "Encounter with Julious Caesar",
+            "datetime": ".. BC"
+        },
+        "4": {
+            "text": "The Ides of March",
+            "datetime": ".. BC"
+        },
+        "5": {
+            "text": "Arrvial of Mark Antony",
+            "datetime": ".. BC"
+        },
+        "6": {
+            "text": "Battle of Actium",
+            "datetime": ".. BC"
+        },
+        "7": {
             "text": "Death of Cleopatra",
             "datetime": "30 BC"
         }

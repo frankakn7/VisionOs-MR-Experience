@@ -5,14 +5,14 @@
             "title": "Cleopatra: The Story of the Queen of Egypt",
             "description": "A figure whose name and legacy is burned into the minds of billions. Coming from a tenacious Greek Macedonian family, she had to fight and even kill for her place on the throne, a noble attempt to save a failing Egypt.",
             "markers": "cleopatra.json",
-            "videofile": "cleopatra_testvideo.mp4"
+            "videofile": "cleopatra.mp4"
         },
         {
             "image": "jfk",
             "title": "Assassination of John F. Kennedy",
             "description": "Kennedy's assassination is still the subject of widespread debate and has spawned many conspiracy theories and alternative scenarios; polls found that a majority of Americans believed there was a conspiracy.",
             "markers": "jfk.json",
-            "videofile": ""
+            "videofile": "jfk.mp4"
         },
         {
             "image": "medusa",
