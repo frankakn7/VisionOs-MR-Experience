@@ -9,16 +9,21 @@ import SwiftUI
 
 /// A view representing a documentary experience for a specific `MediaItem`.
 struct DocumentaryView: View {
+    @EnvironmentObject var appState: AppState
+    @Environment(\.openWindow) var openWindow
+    @Environment(\.dismissWindow) var dismissWindow
+    
     let mediaItem: MediaItem                                    // The media item associated with this documentary view
     @State private var markerData: MarkerData?                  // State variable to hold marker data parsed from JSON
     @State private var currentInformation: String = ""          // Currently displayed information text
     @State private var current3DPath: String = ""               // Path to currently displayed 3D object
     @State private var currentMapElement: MapElement?           // MapElement containing map information for currently displayed map
+    @State private var isLoading = true
     
     var body: some View {
         VStack(spacing: 25) {
             // Check if marker data is loaded
-            if let markerData = markerData {
+            if let markerData = markerData, !isLoading {
                 // Only load subviews if the video file path is set
                 if mediaItem.videofile != nil {
                     // Timeline view showing timestamps at top of view
@@ -77,10 +82,38 @@ struct DocumentaryView: View {
                         loadMarkers()
                     }
             }
+            // bottom toolbar
+                HStack {
+                    Button(action: {
+                        goBack()
+                    }) {
+                        Image(systemName: "arrow.backward")
+                    }
+                    .disabled(isFirstMediaItem)
+                    
+                    Button(action: {
+                        backToMediaSelection()
+                    }) {
+                        Image(systemName: "house")
+                    }
+                    
+                    Button(action: {
+                        goForward()
+                    }) {
+                        Image(systemName: "arrow.forward")
+                    }
+                    .disabled(isLastMediaItem)
+                }
+            }
+        .task(id: mediaItem) {
+            resetState()
+            loadMarkers()
+            isLoading = false
         }
+        
     }
-    
-    /// Loads and parses marker data from a JSON file of the associated `MediaItem`
+        
+        /// Loads and parses marker data from a JSON file of the associated `MediaItem`
     private func loadMarkers() {
         guard let markersFileName = mediaItem.markers else {
             return
@@ -117,6 +150,44 @@ struct DocumentaryView: View {
             print("Markers JSON file not found at path: \(directory)/\(fileName).json")
         }
     }
+    
+    var isFirstMediaItem: Bool {
+        appState.mediaItems.first == mediaItem
+    }
+
+    var isLastMediaItem: Bool {
+        appState.mediaItems.last == mediaItem
+    }
+
+    private func goBack() {
+        guard let index = appState.mediaItems.firstIndex(of: mediaItem) else { return }
+        guard index > 0 else { return }
+        appState.updateSelectedMediaItem(appState.mediaItems[index - 1])
+        isLoading = true
+    }
+
+    private func goForward() {
+        guard let index = appState.mediaItems.firstIndex(of: mediaItem) else { return }
+        guard index < appState.mediaItems.count - 1 else { return }
+        appState.updateSelectedMediaItem(appState.mediaItems[index + 1])
+        isLoading = true
+    }
+
+    private func backToMediaSelection() {
+        appState.updateSelectedMediaItem(nil)
+        openWindow(id: "MediaSelectionWindow")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            dismissWindow()
+        }
+    }
+
+    private func resetState() {
+        markerData = nil
+        currentInformation = ""
+        current3DPath = ""
+        currentMapElement = nil
+    }
+    
 }
 
 // #Preview {
