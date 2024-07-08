@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 /// A view representing a documentary experience for a specific `MediaItem`.
 struct DocumentaryView: View {
@@ -14,6 +15,8 @@ struct DocumentaryView: View {
     @State private var currentInformation: String = ""          // Currently displayed information text
     @State private var current3DPath: String = ""               // Path to currently displayed 3D object
     @State private var currentMapElement: MapElement?           // MapElement containing map information for currently displayed map
+    @State private var player: AVPlayer?
+    @State private var currentHighlight: Int = 0                // Track the current highlighted element in timeline
     
     var body: some View {
         VStack(spacing: 25) {
@@ -22,7 +25,10 @@ struct DocumentaryView: View {
                 // Only load subviews if the video file path is set
                 if mediaItem.videofile != nil {
                     // Timeline view showing timestamps at top of view
-                    Timeline(timestamps: markerData.timestamps)
+                    Timeline(timestamps: markerData.timestamps,
+                             timelineElements: markerData.timelineElements,
+                             onSelectTimestamp: handleTimestampSelection,
+                             currentHighlight: $currentHighlight)
                         .relativeProposed(height: 0.20)
                         .layoutPriority(1)
                         .glassBackgroundEffect()
@@ -45,7 +51,9 @@ struct DocumentaryView: View {
                                     markers: markerData,
                                     currentInformation: $currentInformation,
                                     current3DPath: $current3DPath,
-                                    currentMapElement: $currentMapElement)
+                                    currentMapElement: $currentMapElement,
+                                    player: $player,
+                                    currentHighlight: $currentHighlight)
                         .relativeProposed(width: 0.6)
                         .layoutPriority(1)
                         .glassBackgroundEffect()
@@ -117,8 +125,34 @@ struct DocumentaryView: View {
             print("Markers JSON file not found at path: \(directory)/\(fileName).json")
         }
     }
-}
+    
+    /// Handles the selection of a timestamp from the timeline and updates the player position accordingly.
+    /// - Parameters:
+    ///   - selectedTimestamp: The timestamp selected from the timeline in string format.
+    ///   - timeStamp: The optional `Timestamp` object associated with the selected timestamp.
+    private func handleTimestampSelection(selectedTimestamp: String, timeStamp: Timestamp?) {
+        // Ensure the `timeStamp` is not nil and convert the selected timestamp to a Double.
+        if let timeInSeconds = Double(selectedTimestamp) {
+            print("Seeking to time \(timeInSeconds)")
+            
+            // Ensure player is not nil
+            guard let player = player else {
+                print("Player is nil")
+                return
+            }
 
-// #Preview {
-//     DocumentaryView()
-// }
+            // Seek the player to the corresponding time in seconds with millisecond precision.
+            let seekTime = CMTime(seconds: timeInSeconds, preferredTimescale: 1000)
+            player.seek(to: seekTime) { completed in
+                print("Seek operation completed: \(completed)")
+                // If the seek operation is completed, start playing the video.
+                if completed {
+                    player.play()
+                } else {
+                    print("Seek operation failed or was interrupted")
+                }
+            }
+        }
+    }
+
+}
