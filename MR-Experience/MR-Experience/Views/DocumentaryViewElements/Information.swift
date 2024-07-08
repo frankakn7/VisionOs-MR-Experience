@@ -13,9 +13,8 @@ struct Information: View {
     var body: some View {
         VStack(alignment: .leading) {
                 AttributedTextView(attributedString: MarkdownUI(inputString: informationText))
-                    .frame(width: 200, alignment: .leading)
         }
-//        .frame(maxWidth: 200, maxHeight: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .padding()
     }
 }
@@ -46,7 +45,6 @@ func MarkdownUI(inputString: String) -> NSAttributedString {
     let boldRegexPattern = "\\*{2}(.*?)\\*{2}"
     let italicRegexPattern = "(?<!\\*)\\*(?!\\*)([^\\*\\*]+)\\*(?!\\*)"
     let titleRegexPattern = "# ([\\s\\S]*?)\\n"
-//    let quoteRegexPattern = "> ([\\s\\S]*?)\\n"
     let listRegexPattern = "- ([\\s\\S]*?)\\n"
     let underlineRegexPattern = "<u>(.*?)</u>"
     let highlightRegexPattern = "==(.*?)=="
@@ -57,7 +55,6 @@ func MarkdownUI(inputString: String) -> NSAttributedString {
         let boldRegex = try NSRegularExpression(pattern: boldRegexPattern, options: [])
         let italicRegex = try NSRegularExpression(pattern: italicRegexPattern, options: [])
         let titleRegex = try NSRegularExpression(pattern: titleRegexPattern, options: [])
-//        let quoteRegex = try NSRegularExpression(pattern: quoteRegexPattern, options: [])
         let listRegex = try NSRegularExpression(pattern: listRegexPattern, options: [])
         let underlineRegex = try NSRegularExpression(pattern: underlineRegexPattern, options: [])
         let highlightRegex = try NSRegularExpression(pattern: highlightRegexPattern, options: [])
@@ -73,7 +70,6 @@ func MarkdownUI(inputString: String) -> NSAttributedString {
         let boldResults = boldRegex.matches(in: inputString, options: [], range: NSRange(location: 0, length: nsString.length))
         let italicResults = italicRegex.matches(in: inputString, options: [], range: NSRange(location: 0, length: nsString.length))
         let titleResults = titleRegex.matches(in: inputString, options: [], range: NSRange(location: 0, length: nsString.length))
-//        let quoteResults = quoteRegex.matches(in: inputString, options: [], range: NSRange(location: 0, length: nsString.length))
         let listResults = listRegex.matches(in: inputString, options: [], range: NSRange(location: 0, length: nsString.length))
         let underlineResults = underlineRegex.matches(in: inputString, options: [], range: NSRange(location: 0, length: nsString.length))
         let highlightResults = highlightRegex.matches(in: inputString, options: [], range: NSRange(location: 0, length: nsString.length))
@@ -119,33 +115,11 @@ func MarkdownUI(inputString: String) -> NSAttributedString {
             let range = result.range(at: 0)
             attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 12), range: range)
             attributedString.addAttribute(.foregroundColor, value: UIColor.white, range: range)
-            // Add a line break before each list item
+            // Add a line break before each list itemh
             if range.location > 0 {
                 attributedString.replaceCharacters(in: NSRange(location: range.location - 1, length: 1), with: "\n")
             }
         }
-//        // quote
-//        for result in quoteResults.reversed() {
-//            let range = result.range(at: 1)
-//
-//            // Create an NSTextAttachment to insert a vertical line image to the left of the quote block
-//            let attachment = NSTextAttachment()
-//            // Set the image of NSTextAttachment to the vertical line image of the quotation block you specified
-//            attachment.image = UIImage(named: "quote_line")  // Replace with your vertical line image
-//            let attachmentString = NSAttributedString(attachment: attachment)
-//            // Insert a vertical bar image before the blockquote content
-//            attributedString.insert(attachmentString, at: range.location)
-//
-//            // Sets block quote content to italic and white foreground color
-//            attributedString.addAttribute(.font, value: UIFont.italicSystemFont(ofSize: 12), range: range)
-//            attributedString.addAttribute(.foregroundColor, value: UIColor.white, range: range)
-//            attributedString.addAttribute(.backgroundColor, value: UIColor.lightGray, range: range)
-//
-//            // Adjust the overall indentation of block quotes
-//            let paragraphStyle = NSMutableParagraphStyle()
-//            paragraphStyle.headIndent = 20  // The distance between the left vertical line and the text
-//            attributedString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))
-//        }
         // url
         for result in urlResults.reversed() {
             let textRange = result.range(at: 1)

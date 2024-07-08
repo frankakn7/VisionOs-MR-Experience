@@ -8,9 +8,10 @@
 import SwiftUI
 
 class AppState: ObservableObject {
+    @Published var mediaItems: [MediaItem] = []
     @Published var selectedMediaItem: MediaItem?
     
-    func updateSelectedMediaItem(_ mediaItem: MediaItem) {
+    func updateSelectedMediaItem(_ mediaItem: MediaItem?) {
         selectedMediaItem = mediaItem
     }
 }
