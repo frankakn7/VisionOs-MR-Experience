@@ -31,7 +31,7 @@
             "map_content": 1
         },
         "135": {
-            "information": "President was dead.",
+            "information": "President is dead.",
             "_3dpath": "sphinx",
             "timeline_highlight": 4,
             "map_content": 1
@@ -92,30 +92,30 @@
         },
         "1": {
             "text": "Arrive in Dallas",
-            "datetime": "22 Nov, 1963"
+            "datetime": "22 Nov, 1963\n09:10 a.m."
         },
         "2": {
             "text": "Join the Parade",
-            "datetime": "22 Nov, 1963"
+            "datetime": "22 Nov, 1963\n11:44 a.m."
         },
         "3": {
-            "text": "shot",
-            "datetime": "22 Nov, 1963"
+            "text": "President was shot",
+            "datetime": "22 Nov, 1963\n12:30 p.m."
         },
         "4": {
-            "text": "dead",
-            "datetime": "22 Nov, 1963"
+            "text": "President is dead",
+            "datetime": "22 Nov, 1963\n01:00 p.m."
         },
         "5": {
             "text": "The suspect was arrested",
-            "datetime": "22 Nov, 1963"
+            "datetime": "22 Nov, 1963\n01:51 p.m."
         },
         "6": {
             "text": "Johnson was sworn in as president",
-            "datetime": "22 Nov, 1963"
+            "datetime": "22 Nov, 1963\n02:38 p.m."
         },
         "7": {
-            "text": "lies in repose",
+            "text": "Body in repose",
             "datetime": "23 Nov, 1963"
         },
         "8": {

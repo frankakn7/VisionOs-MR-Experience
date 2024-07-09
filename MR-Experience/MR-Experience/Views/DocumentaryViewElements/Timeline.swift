@@ -22,7 +22,7 @@ struct Timeline: View {
                 Spacer(minLength: 0)  // Leading spacer
                 
                 // Iterate over sorted timeline elements by key
-                ForEach(timelineElements.sorted(by: { $0.key < $1.key }), id: \.key) { key, value in
+                ForEach(timelineElements.sorted(by: { Int($0.key) ?? 0 < Int($1.key) ?? 0}), id: \.key) { key, value in
                     ZStack {
                         // Highlight background for the current element
                         if currentHighlight == Int(key) {
@@ -35,6 +35,7 @@ struct Timeline: View {
                             Text(timelineElements[key]!.datetime)
                                 .bold()
                                 .font(.headline)
+                                .multilineTextAlignment(.center)
                             Text(timelineElements[key]!.text)
                                 .multilineTextAlignment(.center)
                                 .italic()
