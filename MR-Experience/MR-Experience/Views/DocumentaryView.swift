@@ -6,9 +6,14 @@
 //
 
 import SwiftUI
+import AVKit
 
 /// A view representing a documentary experience for a specific `MediaItem`.
 struct DocumentaryView: View {
+    @EnvironmentObject var appState: AppState
+    @Environment(\.openWindow) var openWindow
+    @Environment(\.dismissWindow) var dismissWindow
+    
     let mediaItem: MediaItem                                    // The media item associated with this documentary view
     
     @Binding var current3DPath: String
@@ -19,15 +24,21 @@ struct DocumentaryView: View {
     @State private var currentInformation: String = ""          // Currently displayed information text
     //@State private var current3DPath: String = "Flora"               // Path to currently displayed 3D object
     @State private var currentMapElement: MapElement?           // MapElement containing map information for currently displayed map
+    @State private var isLoading = true
+    @State private var player: AVPlayer?
+    @State private var currentHighlight: Int = 0                // Track the current highlighted element in timeline
     
     var body: some View {
         VStack(spacing: 25) {
             // Check if marker data is loaded
-            if let markerData = markerData {
+            if let markerData = markerData, !isLoading {
                 // Only load subviews if the video file path is set
                 if mediaItem.videofile != nil {
                     // Timeline view showing timestamps at top of view
-                    Timeline(timestamps: markerData.timestamps)
+                    Timeline(timestamps: markerData.timestamps,
+                             timelineElements: markerData.timelineElements,
+                             onSelectTimestamp: handleTimestampSelection,
+                             currentHighlight: $currentHighlight)
                         .relativeProposed(height: 0.20)
                         .layoutPriority(1)
                         .glassBackgroundEffect()
@@ -50,7 +61,9 @@ struct DocumentaryView: View {
                                     markers: markerData,
                                     currentInformation: $currentInformation,
                                     current3DPath: $current3DPath,
-                                    currentMapElement: $currentMapElement)
+                                    currentMapElement: $currentMapElement,
+                                    player: $player,
+                                    currentHighlight: $currentHighlight)
                         .relativeProposed(width: 0.6)
                         .layoutPriority(1)
                         .glassBackgroundEffect()
@@ -82,10 +95,38 @@ struct DocumentaryView: View {
                         loadMarkers()
                     }
             }
+            // bottom toolbar
+                HStack {
+                    Button(action: {
+                        goBack()
+                    }) {
+                        Image(systemName: "arrow.backward")
+                    }
+                    .disabled(isFirstMediaItem)
+                    
+                    Button(action: {
+                        backToMediaSelection()
+                    }) {
+                        Image(systemName: "house")
+                    }
+                    
+                    Button(action: {
+                        goForward()
+                    }) {
+                        Image(systemName: "arrow.forward")
+                    }
+                    .disabled(isLastMediaItem)
+                }
+            }
+        .task(id: mediaItem) {
+            resetState()
+            loadMarkers()
+            isLoading = false
         }
+        
     }
-    
-    /// Loads and parses marker data from a JSON file of the associated `MediaItem`
+        
+        /// Loads and parses marker data from a JSON file of the associated `MediaItem`
     private func loadMarkers() {
         guard let markersFileName = mediaItem.markers else {
             return
@@ -123,8 +164,70 @@ struct DocumentaryView: View {
             print("Markers JSON file not found at path: \(directory)/\(fileName).json")
         }
     }
-}
+    
+    var isFirstMediaItem: Bool {
+        appState.mediaItems.first == mediaItem
+    }
 
-// #Preview {
-//     DocumentaryView()
-// }
+    var isLastMediaItem: Bool {
+        appState.mediaItems.last == mediaItem
+    }
+
+    private func goBack() {
+        guard let index = appState.mediaItems.firstIndex(of: mediaItem) else { return }
+        guard index > 0 else { return }
+        appState.updateSelectedMediaItem(appState.mediaItems[index - 1])
+        isLoading = true
+    }
+
+    private func goForward() {
+        guard let index = appState.mediaItems.firstIndex(of: mediaItem) else { return }
+        guard index < appState.mediaItems.count - 1 else { return }
+        appState.updateSelectedMediaItem(appState.mediaItems[index + 1])
+        isLoading = true
+    }
+
+    private func backToMediaSelection() {
+        appState.updateSelectedMediaItem(nil)
+        openWindow(id: "MediaSelectionWindow")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            dismissWindow()
+        }
+    }
+
+    private func resetState() {
+        markerData = nil
+        currentInformation = ""
+        current3DPath = ""
+        currentMapElement = nil
+    }
+    
+    /// Handles the selection of a timestamp from the timeline and updates the player position accordingly.
+    /// - Parameters:
+    ///   - selectedTimestamp: The timestamp selected from the timeline in string format.
+    ///   - timeStamp: The optional `Timestamp` object associated with the selected timestamp.
+    private func handleTimestampSelection(selectedTimestamp: String, timeStamp: Timestamp?) {
+        // Ensure the `timeStamp` is not nil and convert the selected timestamp to a Double.
+        if let timeInSeconds = Double(selectedTimestamp) {
+            print("Seeking to time \(timeInSeconds)")
+            
+            // Ensure player is not nil
+            guard let player = player else {
+                print("Player is nil")
+                return
+            }
+
+            // Seek the player to the corresponding time in seconds with millisecond precision.
+            let seekTime = CMTime(seconds: timeInSeconds, preferredTimescale: 1000)
+            player.seek(to: seekTime) { completed in
+                print("Seek operation completed: \(completed)")
+                // If the seek operation is completed, start playing the video.
+                if completed {
+                    player.play()
+                } else {
+                    print("Seek operation failed or was interrupted")
+                }
+            }
+        }
+    }
+}

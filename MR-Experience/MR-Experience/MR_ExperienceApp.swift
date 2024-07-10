@@ -17,13 +17,15 @@ struct MR_ExperienceApp: App {
     var body: some Scene {
         // Media selection window group
         WindowGroup(id: "MediaSelectionWindow") {
-            MediaSelectionView(appState: appState)
+            MediaSelectionView()
+                .environmentObject(appState)
         }
     
         // Documentary window group
         WindowGroup(id: "DocumentaryWindow") {
             if let selectedMediaItem = appState.selectedMediaItem {
                 DocumentaryView(mediaItem: selectedMediaItem, current3DPath: $appState.threeDObjectFilePath, threeDObjectOpen: $appState.threeDObjectOpened)
+                    .environmentObject(appState)
                     .onAppear {
                         // Request geometry update for the window scene. This is used to keep the aspect ratio of the window.
                         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {

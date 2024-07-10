@@ -12,25 +12,38 @@ struct VideoPlayerView: UIViewControllerRepresentable {
     @Binding var currentInformation: String         // Binding for the current information displayed in the video player
     @Binding var current3DPath: String              // Binding for the current 3D object path displayed in the video player
     @Binding var currentMapElement: MapElement?     // Binding for the current map element displayed in the video player.
+    @Binding var player: AVPlayer?
+    @Binding var currentHighlight: Int              // Track the current highlighted element in timeline
     
     /// Creates a view controller instance with an `AVPlayer` configured to play the provided video.
     func makeUIViewController(context: Context) -> AVPlayerViewController {
         let playerViewController = AVPlayerViewController()
         let player = AVPlayer(url: videoURL)
         playerViewController.player = player
+        DispatchQueue.main.async {
+            self.player = player
+        }
         
         // Add observer to track time changes and trigger actions based on timestamps
         player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1), queue: nil) { time in
             let currentTime = Int(time.seconds)
+            let availableTimestamps = Array(markerData.timestamps.keys)
+            var maxTimestamp = 0
             
-            // Check if current time matches any timestamp in markerData.timestamps
-            if let timestamp = markerData.timestamps[String(currentTime)] {
-                print("Marker triggered at second \(currentTime): \(timestamp.information)")
-                // Update Views
+            // find biggest timestamp that is <= currentTime
+            for el in availableTimestamps {
+                if let intEl = Int(el), intEl <= currentTime, intEl > maxTimestamp {
+                    maxTimestamp = intEl
+                }
+            }
+            
+            // display content
+            if let timestamp = markerData.timestamps[String(maxTimestamp)] {
                 DispatchQueue.main.async {
                     currentInformation = timestamp.information
                     current3DPath = timestamp._3dpath
                     currentMapElement = markerData.mapElements[String(timestamp.map_content)]
+                    currentHighlight = timestamp.timeline_highlight
                 }
             }
         }
@@ -40,10 +53,11 @@ struct VideoPlayerView: UIViewControllerRepresentable {
     
     /// Updates the view controller with any new information, if needed.
     func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {
-        // Needed later when the video url is changed
+        // Needed later when the video URL is changed
         // TODO: This function should change the video URL when a user closes a documentary and selects another one.
     }
 }
+
 
 /// A view for displaying a documentary video.
 struct Documentary: View {
@@ -56,6 +70,8 @@ struct Documentary: View {
     @Binding var currentInformation: String         // Binding for the current information displayed in the video player
     @Binding var current3DPath: String              // Binding for the current 3D object path displayed in the video player
     @Binding var currentMapElement: MapElement?     // Binding for the current map element displayed in the video player.
+    @Binding var player: AVPlayer?
+    @Binding var currentHighlight: Int              // Track the current highlighted element in timeline
     
     /// Computed property to retrieve the file path of the video based on `mediaItem.videofile`.
     var videoFilePath: String? {
@@ -69,11 +85,11 @@ struct Documentary: View {
         // Return the path of the video file in the main bundle
         return Bundle.main.path(forResource: videoFileName, ofType: "mp4")
     }
-
+    
     var body: some View {
         if let path = videoFilePath {
             let url = URL(fileURLWithPath: path)
-            VideoPlayerView(videoURL: url, markerData: markers, currentInformation: $currentInformation, current3DPath: $current3DPath, currentMapElement: $currentMapElement)
+            VideoPlayerView(videoURL: url, markerData: markers, currentInformation: $currentInformation, current3DPath: $current3DPath, currentMapElement: $currentMapElement, player: $player, currentHighlight: $currentHighlight)
                 .edgesIgnoringSafeArea(.all)
         } else {
             // Display message when video file is not found

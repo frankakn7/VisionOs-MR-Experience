@@ -7,120 +7,61 @@
 
 import SwiftUI
 
+/// A view representing a horizontal timeline with selectable elements.
 struct Timeline: View {
-    let timestamps: [String: Timestamp]
+    let timestamps: [String: Timestamp]                 // Dictionary mapping timestamp strings to Timestamp objects
+    let timelineElements: [String: TimelineElement]     // Dictionary mapping keys to TimelineElement objects
+    let onSelectTimestamp: (String, Timestamp) -> Void  // Function to call when a timestamp is selected
+    
+    @Binding var currentHighlight: Int                  // Track the current highlighted element in timeline
     
     var body: some View {
+        // Scrollable horizontal stack to display timeline elements
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 100) {
-                Spacer(minLength: 20)
-                VStack {
-                    Text("3000 BC")
-                        .bold()
-                        .font(.headline)
-                    Text("Some event")
-                        .multilineTextAlignment(.center)
-                        .italic()
-                    Rectangle()
-                        .fill(.white)
-                        .frame(width: 2, height: 10)
-                }.fixedSize()
-                VStack {
-                    Text("2500 BC")
-                        .bold()
-                        .font(.headline)
-                    Text("Some event")
-                        .multilineTextAlignment(.center)
-                        .italic()
-                    Rectangle()
-                        .fill(.white)
-                        .frame(width: 2, height: 10)
-                }.fixedSize()
-                VStack {
-                    Text("2000 BC")
-                        .bold()
-                        .font(.headline)
-                    Text("Some event")
-                        .multilineTextAlignment(.center)
-                        .italic()
-                    Rectangle()
-                        .fill(.white)
-                        .frame(width: 2, height: 10)
-                }.fixedSize()
-                VStack {
-                    Text("1500 BC")
-                        .bold()
-                        .font(.headline)
-                    Text("Some event")
-                        .multilineTextAlignment(.center)
-                        .italic()
-                    Rectangle()
-                        .fill(.white)
-                        .frame(width: 2, height: 10)
-                }.fixedSize()
-                VStack {
-                    Text("1000 BC")
-                        .bold()
-                        .font(.headline)
-                    Text("Some event")
-                        .multilineTextAlignment(.center)
-                        .italic()
-                    Rectangle()
-                        .fill(.white)
-                        .frame(width: 2, height: 10)
-                }.fixedSize()
-                VStack {
-                    Text("500 BC")
-                        .bold()
-                        .font(.headline)
-                    Text("Some event")
-                        .multilineTextAlignment(.center)
-                        .italic()
-                    Rectangle()
-                        .fill(.white)
-                        .frame(width: 2, height: 10)
-                }.fixedSize()
-                VStack {
-                    Text("250 BC")
-                        .bold()
-                        .font(.headline)
-                    Text("Some event")
-                        .multilineTextAlignment(.center)
-                        .italic()
-                    Rectangle()
-                        .fill(.white)
-                        .frame(width: 2, height: 10)
-                }.fixedSize()
-                VStack {
-                    Text("1 BC")
-                        .bold()
-                        .font(.headline)
-                    Text("Some event")
-                        .multilineTextAlignment(.center)
-                        .italic()
-                    Rectangle()
-                        .fill(.white)
-                        .frame(width: 2, height: 10)
-                }.fixedSize()
-                VStack {
-                    Text("100 AD")
-                        .bold()
-                        .font(.headline)
-                    Text("Some event")
-                        .multilineTextAlignment(.center)
-                        .italic()
-                    Rectangle()
-                        .fill(.white)
-                        .frame(width: 2, height: 10)
-                }.fixedSize()
-                Spacer(minLength: 20)
+            HStack(spacing: 50) {
+                Spacer(minLength: 0)  // Leading spacer
+                
+                // Iterate over sorted timeline elements by key
+                ForEach(timelineElements.sorted(by: { Int($0.key) ?? 0 < Int($1.key) ?? 0}), id: \.key) { key, value in
+                    ZStack {
+                        // Highlight background for the current element
+                        if currentHighlight == Int(key) {
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color.white.opacity(0.2))
+                        }
+                        
+                        VStack {
+                            // Display datetime and text of the timeline element
+                            Text(timelineElements[key]!.datetime)
+                                .bold()
+                                .font(.headline)
+                                .multilineTextAlignment(.center)
+                            Text(timelineElements[key]!.text)
+                                .multilineTextAlignment(.center)
+                                .italic()
+                        }
+                        .padding()
+                    }
+                    .fixedSize()
+                    // Add tap gesture to the element
+                    .onTapGesture {
+                        // Check if key can be converted to an integer
+                        if let intKey = Int(key) {
+                            // Filter timestamps with the same timeline_highlight
+                            let sameHighlightElements = timestamps.filter { $0.value.timeline_highlight == intKey }
+                            // Find the smallest timestamp key and corresponding timestamp
+                            if let smallestTimestampKey = sameHighlightElements.keys.sorted().first,
+                               let correspondingTimestamp = timestamps[smallestTimestampKey] {
+                                // Execute the function to change video position
+                                onSelectTimestamp(smallestTimestampKey, correspondingTimestamp)
+                            }
+                        }
+                    }
+                }
+                Spacer(minLength: 0)  // Trailing spacer
             }
         }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding()
     }
 }
-
-// #Preview {
-//     Timeline()
-// }

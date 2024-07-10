@@ -10,8 +10,6 @@
 		5E0F65AD2C1C7683004CA8E5 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F65AC2C1C7683004CA8E5 /* AppState.swift */; };
 		5E0F65AF2C1C7BB6004CA8E5 /* MarkerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F65AE2C1C7BB6004CA8E5 /* MarkerData.swift */; };
 		5E0F65B12C1C8A4C004CA8E5 /* cleopatra.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E0F65B02C1C8A4C004CA8E5 /* cleopatra.json */; };
-		5EBF391F2C13552D0078DE05 /* cleopatra_testvideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5EBF391E2C13552D0078DE05 /* cleopatra_testvideo.mp4 */; };
-		5EBF39202C13552D0078DE05 /* cleopatra_testvideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5EBF391E2C13552D0078DE05 /* cleopatra_testvideo.mp4 */; };
 		5EBF39222C1360EE0078DE05 /* documentaries.json in Resources */ = {isa = PBXBuildFile; fileRef = 5EBF39212C1360EE0078DE05 /* documentaries.json */; };
 		5EBF39232C1360EE0078DE05 /* documentaries.json in Resources */ = {isa = PBXBuildFile; fileRef = 5EBF39212C1360EE0078DE05 /* documentaries.json */; };
 		5EBF39262C1363330078DE05 /* markers_example.json in Resources */ = {isa = PBXBuildFile; fileRef = 5EBF39252C1363330078DE05 /* markers_example.json */; };
@@ -26,6 +24,9 @@
 		5EDC4CBB2BE503F20099F76D /* ThreeDObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC4CBA2BE503F20099F76D /* ThreeDObject.swift */; };
 		94738F522C33251800CE0C38 /* LadyOfMalta.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 94738F512C33251800CE0C38 /* LadyOfMalta.usdz */; };
 		948035212C2B523900D3E120 /* VolumetricThreeDObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948035202C2B523900D3E120 /* VolumetricThreeDObject.swift */; };
+		82D6D7DA2C25BB4C00346609 /* jfk.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 82D6D7D92C25BB4C00346609 /* jfk.mp4 */; };
+		82D6D7DC2C25BB6400346609 /* cleopatra.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 82D6D7DB2C25BB6400346609 /* cleopatra.mp4 */; };
+		82D6D7DE2C25BBA400346609 /* jfk.json in Resources */ = {isa = PBXBuildFile; fileRef = 82D6D7DD2C25BBA400346609 /* jfk.json */; };
 		94C03FFD2BDBFDD400DB6F9F /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 94C03FFC2BDBFDD400DB6F9F /* RealityKitContent */; };
 		94C03FFF2BDBFDD400DB6F9F /* MR_ExperienceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C03FFE2BDBFDD400DB6F9F /* MR_ExperienceApp.swift */; };
 		94C040012BDBFDD400DB6F9F /* MediaSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C040002BDBFDD400DB6F9F /* MediaSelectionView.swift */; };
@@ -49,7 +50,6 @@
 		5E0F65AC2C1C7683004CA8E5 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		5E0F65AE2C1C7BB6004CA8E5 /* MarkerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerData.swift; sourceTree = "<group>"; };
 		5E0F65B02C1C8A4C004CA8E5 /* cleopatra.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cleopatra.json; sourceTree = "<group>"; };
-		5EBF391E2C13552D0078DE05 /* cleopatra_testvideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = cleopatra_testvideo.mp4; sourceTree = "<group>"; };
 		5EBF39212C1360EE0078DE05 /* documentaries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = documentaries.json; sourceTree = "<group>"; };
 		5EBF39252C1363330078DE05 /* markers_example.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = markers_example.json; sourceTree = "<group>"; };
 		5ED887D62BE945A300649820 /* DocumentaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentaryView.swift; sourceTree = "<group>"; };
@@ -62,6 +62,9 @@
 		5EDC4CBA2BE503F20099F76D /* ThreeDObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDObject.swift; sourceTree = "<group>"; };
 		94738F512C33251800CE0C38 /* LadyOfMalta.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = LadyOfMalta.usdz; path = "../../../Downloads/the-sleeping-lady-of-malta/source/LadyOfMalta.usdz"; sourceTree = "<group>"; };
 		948035202C2B523900D3E120 /* VolumetricThreeDObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumetricThreeDObject.swift; sourceTree = "<group>"; };
+		82D6D7D92C25BB4C00346609 /* jfk.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = jfk.mp4; sourceTree = "<group>"; };
+		82D6D7DB2C25BB6400346609 /* cleopatra.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = cleopatra.mp4; sourceTree = "<group>"; };
+		82D6D7DD2C25BBA400346609 /* jfk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = jfk.json; sourceTree = "<group>"; };
 		94C03FF72BDBFDD400DB6F9F /* MR-Experience.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MR-Experience.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94C03FFB2BDBFDD400DB6F9F /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		94C03FFE2BDBFDD400DB6F9F /* MR_ExperienceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_ExperienceApp.swift; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 		5EBF391D2C1355140078DE05 /* Documentaries */ = {
 			isa = PBXGroup;
 			children = (
+				82D6D7D82C25BB3600346609 /* JFK Assassination */,
 				5EBF39242C1363150078DE05 /* Cleopatra */,
 				5EBF39212C1360EE0078DE05 /* documentaries.json */,
 				5EBF39252C1363330078DE05 /* markers_example.json */,
@@ -106,7 +110,7 @@
 		5EBF39242C1363150078DE05 /* Cleopatra */ = {
 			isa = PBXGroup;
 			children = (
-				5EBF391E2C13552D0078DE05 /* cleopatra_testvideo.mp4 */,
+				82D6D7DB2C25BB6400346609 /* cleopatra.mp4 */,
 				5E0F65B02C1C8A4C004CA8E5 /* cleopatra.json */,
 			);
 			path = Cleopatra;
@@ -150,6 +154,15 @@
 				5ED887D92BE9618800649820 /* RelativeSizeLayout.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		82D6D7D82C25BB3600346609 /* JFK Assassination */ = {
+			isa = PBXGroup;
+			children = (
+				82D6D7DD2C25BBA400346609 /* jfk.json */,
+				82D6D7D92C25BB4C00346609 /* jfk.mp4 */,
+			);
+			path = "JFK Assassination";
 			sourceTree = "<group>";
 		};
 		94C03FEE2BDBFDD400DB6F9F = {
@@ -303,9 +316,11 @@
 				5EBF39262C1363330078DE05 /* markers_example.json in Resources */,
 				94DB9DB62C34A3AF006D088F /* Flora.usdz in Resources */,
 				94C040032BDBFDD500DB6F9F /* Assets.xcassets in Resources */,
+				82D6D7DC2C25BB6400346609 /* cleopatra.mp4 in Resources */,
 				5EBF39222C1360EE0078DE05 /* documentaries.json in Resources */,
 				5E0F65B12C1C8A4C004CA8E5 /* cleopatra.json in Resources */,
-				5EBF391F2C13552D0078DE05 /* cleopatra_testvideo.mp4 in Resources */,
+				82D6D7DA2C25BB4C00346609 /* jfk.mp4 in Resources */,
+				82D6D7DE2C25BBA400346609 /* jfk.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,7 +328,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EBF39202C13552D0078DE05 /* cleopatra_testvideo.mp4 in Resources */,
 				5EBF39232C1360EE0078DE05 /* documentaries.json in Resources */,
 				5EBF39272C1363330078DE05 /* markers_example.json in Resources */,
 			);

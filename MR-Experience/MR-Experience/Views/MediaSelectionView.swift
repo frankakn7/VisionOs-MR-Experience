@@ -29,13 +29,7 @@ struct MediaData: Codable {
 }
 
 struct MediaSelectionView: View {
-    @ObservedObject var appState: AppState
-    
-    @Environment(\.openWindow) private var openWindow
-    @Environment(\.dismissWindow) private var dismissWindow
-    @State private var selectedMediaItem: MediaItem?
-    
-    @State private var mediaItems: [MediaItem] = []
+    @EnvironmentObject private var appState: AppState
     
     // Define the grid layout
     let columns = [
@@ -51,24 +45,16 @@ struct MediaSelectionView: View {
                 .font(.largeTitle)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 0))
-            Text(String(mediaItems.count) + " Documentaries")
+            Text("\(appState.mediaItems.count) Documentaries")
                 .font(.footnote)
                 .opacity(0.6)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
             LazyVGrid(columns: columns, spacing: 20) {
                 // Iterate over all media items and display them
-                ForEach(mediaItems) { item in
-                    MediaSelectionElement(
-                        mediaItem: item,
-                        openAndDismiss: { mediaItem in
-                            self.selectedMediaItem = mediaItem
-                            Task {
-                                await openAndDismiss(mediaItem: mediaItem)
-                            }
-                        }
-                    )
-                    .frame(height: 400)
+                ForEach(appState.mediaItems) { item in
+                    MediaSelectionElement(mediaItem: item)
+                        .frame(height: 400)
                 }
             }
             .padding()
@@ -80,11 +66,12 @@ struct MediaSelectionView: View {
     
     // Load and decode the JSON file
     func loadMediaItems() {
+        guard appState.mediaItems.isEmpty else { return }
         if let url = Bundle.main.url(forResource: "documentaries", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
                 let decodedData = try JSONDecoder().decode(MediaData.self, from: data)
-                self.mediaItems = decodedData.documentaries
+                appState.mediaItems = decodedData.documentaries
             } catch {
                 print("Failed to load or decode JSON: \(error)")
             }
@@ -92,43 +79,21 @@ struct MediaSelectionView: View {
             print("JSON file not found")
         }
     }
-    
-    // Helper function for window opening/closing
-    @MainActor
-    private func openAndDismiss(mediaItem: MediaItem) async {
-        appState.selectedMediaItem = mediaItem
-        
-        await openWindowAsync()
-        dismissWindow()
-    }
-    
-    // Helper function for window opening/closing
-    @MainActor
-    private func openWindowAsync() async {
-        await withCheckedContinuation { continuation in
-            openWindow(id: "DocumentaryWindow")
-            DispatchQueue.main.async {
-                continuation.resume()
-            }
-        }
-    }
-    
-    // Public method to get the selected media item
-    func getSelectedMediaItem() -> MediaItem? {
-        return selectedMediaItem
-    }
 }
-
+    
 struct MediaSelectionElement: View {
+    @Environment(\.openWindow) private var openWindow
+    @Environment(\.dismissWindow) private var dismissWindow
+    @EnvironmentObject private var appState: AppState
     // Arguments passed to this view
     var mediaItem: MediaItem
-    var openAndDismiss: (_ mediaItem: MediaItem) -> Void
     
     var body: some View {
         Button(action: {
-            Task {
-                // When MediaSelectionElement is clicked, wait for documentary to open before closing this window
-                openAndDismiss(mediaItem)
+            appState.updateSelectedMediaItem(mediaItem)
+            openWindow(id: "DocumentaryWindow")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                dismissWindow()
             }
         }) {
             VStack {

@@ -8,6 +8,7 @@
 import SwiftUI
 
 class AppState: ObservableObject {
+    @Published var mediaItems: [MediaItem] = []
     @Published var selectedMediaItem: MediaItem?
     
     @Published var threeDObjectFilePath: String = "Flora";
