@@ -23,7 +23,7 @@ struct MR_ExperienceApp: App {
         // Documentary window group
         WindowGroup(id: "DocumentaryWindow") {
             if let selectedMediaItem = appState.selectedMediaItem {
-                DocumentaryView(mediaItem: selectedMediaItem, threeDObjectOpen: $appState.threeDObjectOpened)
+                DocumentaryView(mediaItem: selectedMediaItem, current3DPath: $appState.threeDObjectFilePath, threeDObjectOpen: $appState.threeDObjectOpened)
                     .onAppear {
                         // Request geometry update for the window scene. This is used to keep the aspect ratio of the window.
                         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
@@ -41,15 +41,10 @@ struct MR_ExperienceApp: App {
         .windowStyle(.plain)
         .defaultSize(width: 1.2, height: 0.48, depth: 0.0, in: .meters)
         
-        //3D Object in volumetric view
+        //3D Object in seperate window view
         WindowGroup(id: "3dObjectVolumetric"){
-            VolumetricThreeDObject(isOpen: $appState.threeDObjectOpened, threeDObjectName: "Flora")
-            //Model3D(named: "Sphinx3D")
-            //VolumetricContainer()
-            //    .aspectRatio(contentMode: .fit)
+            VolumetricThreeDObject(isOpen: $appState.threeDObjectOpened, threeDObjectName: appState.threeDObjectFilePath)
         }
-        //.windowStyle(.volumetric)
         .windowStyle(.plain)
-        //.defaultSize(width: 1, height: 1, depth: 1, in: .meters)
     }
 }

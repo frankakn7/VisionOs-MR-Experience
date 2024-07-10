@@ -10,6 +10,7 @@ import SwiftUI
 class AppState: ObservableObject {
     @Published var selectedMediaItem: MediaItem?
     
+    @Published var threeDObjectFilePath: String = "Flora";
     @Published var threeDObjectOpened: Bool = false;
     
     func updateSelectedMediaItem(_ mediaItem: MediaItem) {

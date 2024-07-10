@@ -26,7 +26,6 @@
 		5EDC4CBB2BE503F20099F76D /* ThreeDObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDC4CBA2BE503F20099F76D /* ThreeDObject.swift */; };
 		94738F522C33251800CE0C38 /* LadyOfMalta.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 94738F512C33251800CE0C38 /* LadyOfMalta.usdz */; };
 		948035212C2B523900D3E120 /* VolumetricThreeDObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948035202C2B523900D3E120 /* VolumetricThreeDObject.swift */; };
-		948035232C2B5E8600D3E120 /* VolumetricContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948035222C2B5E8600D3E120 /* VolumetricContainer.swift */; };
 		94C03FFD2BDBFDD400DB6F9F /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 94C03FFC2BDBFDD400DB6F9F /* RealityKitContent */; };
 		94C03FFF2BDBFDD400DB6F9F /* MR_ExperienceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C03FFE2BDBFDD400DB6F9F /* MR_ExperienceApp.swift */; };
 		94C040012BDBFDD400DB6F9F /* MediaSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C040002BDBFDD400DB6F9F /* MediaSelectionView.swift */; };
@@ -63,7 +62,6 @@
 		5EDC4CBA2BE503F20099F76D /* ThreeDObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDObject.swift; sourceTree = "<group>"; };
 		94738F512C33251800CE0C38 /* LadyOfMalta.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = LadyOfMalta.usdz; path = "../../../Downloads/the-sleeping-lady-of-malta/source/LadyOfMalta.usdz"; sourceTree = "<group>"; };
 		948035202C2B523900D3E120 /* VolumetricThreeDObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumetricThreeDObject.swift; sourceTree = "<group>"; };
-		948035222C2B5E8600D3E120 /* VolumetricContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumetricContainer.swift; sourceTree = "<group>"; };
 		94C03FF72BDBFDD400DB6F9F /* MR-Experience.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MR-Experience.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94C03FFB2BDBFDD400DB6F9F /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		94C03FFE2BDBFDD400DB6F9F /* MR_ExperienceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_ExperienceApp.swift; sourceTree = "<group>"; };
@@ -123,7 +121,6 @@
 				5EDC4CB72BE503D80099F76D /* Information.swift */,
 				5EDC4CBA2BE503F20099F76D /* ThreeDObject.swift */,
 				948035202C2B523900D3E120 /* VolumetricThreeDObject.swift */,
-				948035222C2B5E8600D3E120 /* VolumetricContainer.swift */,
 			);
 			path = DocumentaryViewElements;
 			sourceTree = "<group>";
@@ -338,7 +335,6 @@
 				5EDC4CB62BE503C90099F76D /* Documentary.swift in Sources */,
 				94C03FFF2BDBFDD400DB6F9F /* MR_ExperienceApp.swift in Sources */,
 				948035212C2B523900D3E120 /* VolumetricThreeDObject.swift in Sources */,
-				948035232C2B5E8600D3E120 /* VolumetricContainer.swift in Sources */,
 				5ED887D72BE945A300649820 /* DocumentaryView.swift in Sources */,
 				5EDC4CB22BE503B30099F76D /* ContextMap.swift in Sources */,
 				5E0F65AF2C1C7BB6004CA8E5 /* MarkerData.swift in Sources */,

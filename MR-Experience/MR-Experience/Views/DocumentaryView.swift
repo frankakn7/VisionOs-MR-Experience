@@ -11,11 +11,13 @@ import SwiftUI
 struct DocumentaryView: View {
     let mediaItem: MediaItem                                    // The media item associated with this documentary view
     
+    @Binding var current3DPath: String
+    
     @Binding var threeDObjectOpen: Bool;
     
     @State private var markerData: MarkerData?                  // State variable to hold marker data parsed from JSON
     @State private var currentInformation: String = ""          // Currently displayed information text
-    @State private var current3DPath: String = "Flora"               // Path to currently displayed 3D object
+    //@State private var current3DPath: String = "Flora"               // Path to currently displayed 3D object
     @State private var currentMapElement: MapElement?           // MapElement containing map information for currently displayed map
     
     var body: some View {
@@ -60,7 +62,7 @@ struct DocumentaryView: View {
                                 .glassBackgroundEffect()
                             
                             // 3D object view based on the current 3D path
-                            ThreeDObject(objectFileName: current3DPath, threeDObjectOpened: $threeDObjectOpen)
+                            ThreeDObject(objectFileName: $current3DPath, threeDObjectOpened: $threeDObjectOpen)
                                 .relativeProposed(height: 0.5)
                                 .layoutPriority(1)
                         }
@@ -113,6 +115,7 @@ struct DocumentaryView: View {
                     current3DPath = initialTimestamp._3dpath
                     currentMapElement = markerData?.mapElements[String(initialTimestamp.map_content)]
                 }
+                print(current3DPath)
             } catch {
                 print("Failed to load or decode markers JSON: \(error)")
             }
