@@ -2,61 +2,61 @@
     "timestamps": {
         "0": {
             "information": "# Cleopatra\n**bold**\n*italics*\nUnordered list: - 111\n- 222\n- 333\ndividing line⬇️\n---\nHyperlink text: [TUBerlin](https://www.tu.berlin)\n<u>underline</u>\n==highlighting==\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111",
-            "_3dpath": "Sphinx3D",
+            "_3dpath": "Flora",
             "timeline_highlight": 0,
             "map_content": 0
         },
         "12": {
             "information": "Introduce Bloodline.",
-            "_3dpath": "sphinx",
+            "_3dpath": "LadyOfMalta",
             "timeline_highlight": 0,
             "map_content": 1
         },
         "90": {
             "information": "Events of her Early years.",
-            "_3dpath": "sphinx",
+            "_3dpath": "LadyOfMalta",
             "timeline_highlight": 0,
             "map_content": 1
         },
         "164": {
             "information": "After the Death of her Father.",
-            "_3dpath": "sphinx",
+            "_3dpath": "Flora",
             "timeline_highlight": 1,
             "map_content": 1
         },
         "313": {
             "information": "In Exile.",
-            "_3dpath": "sphinx",
+            "_3dpath": "Flora",
             "timeline_highlight": 2,
             "map_content": 1
         },
         "378": {
             "information": "Cleopatra and Julious Caesar.",
-            "_3dpath": "sphinx",
+            "_3dpath": "Flora",
             "timeline_highlight": 3,
             "map_content": 1
         },
         "478": {
             "information": "Death of Julious Caesar.",
-            "_3dpath": "sphinx",
+            "_3dpath": "Flora",
             "timeline_highlight": 4,
             "map_content": 1
         },
         "539": {
             "information": "Mark Antony.",
-            "_3dpath": "sphinx",
+            "_3dpath": "Flora",
             "timeline_highlight": 5,
             "map_content": 1
         },
         "636": {
             "information": "Battle of Actium.",
-            "_3dpath": "sphinx",
+            "_3dpath": "Flora",
             "timeline_highlight": 6,
             "map_content": 1
         },
         "734": {
             "information": "Death of Cleopatra.",
-            "_3dpath": "sphinx",
+            "_3dpath": "Flora",
             "timeline_highlight": 7,
             "map_content": 1
         }

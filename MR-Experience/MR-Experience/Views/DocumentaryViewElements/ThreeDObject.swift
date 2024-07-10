@@ -9,24 +9,52 @@ import SwiftUI
 import _RealityKit_SwiftUI
 
 struct ThreeDObject: View {
-    let objectFileName: String
+    
+    @Environment(\.openWindow) private var openWindow
+    
+    @Binding var objectFileName: String
+    
+    @Binding var threeDObjectOpened: Bool;
+    
+    @State var degreesRotating = 0.0
+    
+    @State var axisY = 1.0
     
     var body: some View {
         Model3D(named: objectFileName) { model in
-             model
-                 .resizable()
-                 .aspectRatio(contentMode: .fit)
-                 .rotation3DEffect(
-                         .degrees(-65),
-                         axis: (x: 0.0, y: 1.0, z: 0.0),
-                         anchor: .center)
-                 //.tint(.brown)
-         } placeholder: {
-             ProgressView()
-         }
+            model
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            
+                .rotation3DEffect(
+                    .degrees(degreesRotating),
+                    axis: (x: 0.0, y: axisY, z: 0.0),anchor: .center)
+                .frame(depth: 10)
+                .offset(z: -10 / 2)
+                .onAppear{
+                    threeDObjectOpened = false
+                    withAnimation(
+                        .linear(duration: 1)
+                        .speed(0.05)
+                        .repeatForever(autoreverses: false)) {
+                            degreesRotating = 360.00
+                        }
+                }
+                .onTapGesture {
+                    threeDObjectOpened = true
+                    openWindow(id: "3dObjectVolumetric")
+                }
+                .opacity(threeDObjectOpened ? 0 : 1)
+        } placeholder: {
+            ProgressView()
+                .offset(z: -10 * 0.75)
+        }
+         .onChange(of: objectFileName, { oldValue, newValue in
+             degreesRotating = 0.0
+         })
     }
 }
 
-// #Preview {
-//     ThreeDObject()
-// }
+ /*#Preview {
+     ThreeDObject(objectFileName: "none", true)
+ }*/
