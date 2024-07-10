@@ -14,7 +14,7 @@ class AppState: ObservableObject {
     @Published var threeDObjectFilePath: String = "Flora";
     @Published var threeDObjectOpened: Bool = false;
     
-    func updateSelectedMediaItem(_ mediaItem: MediaItem) {
+    func updateSelectedMediaItem(_ mediaItem: MediaItem?) {
         selectedMediaItem = mediaItem
     }
 }
