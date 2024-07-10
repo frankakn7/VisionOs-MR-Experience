@@ -1,85 +1,85 @@
 {
     "timestamps": {
         "0": {
-            "information": "Overview",
+            "information": "# Biography\n**John Fitzgerald Kennedy**, commonly known as JFK, *was born on May 29, 1917 in Brookline, Massachusetts*. He was the 35th President of the United States. He was inaugurated on <u>January 20, 1961</u>, and served until his assassination on <u>November 22, 1963</u>.---# Presidency\nKennedy's most notable achievement was the proposal of the ==\"Moon Landing Program\"== in <u>1961</u>, which culminated in <u>1969</u>. He also managed major Cold War crises. For example: \n- ==Cuban Missile Crisis==\n- ==Civil Rights Movement==\n---# Assassination\nKennedy was **assassinated** on <u>November 22, 1963</u>, during a visit to Dallas, Texas. While riding in an open-top car through Dealey Plaza in downtown Dallas, he was shot and fatally wounded, dying shortly thereafter at Parkland Hospital.*The assassination shocked the world and sparked numerous conspiracy theories and investigations.* [The Warren Commission](https://en.wikipedia.org/wiki/Warren_Commission) subsequently investigated the assassination and concluded that **Lee Harvey Oswald** was the sole assassin.",
             "_3dpath": "Sphinx3D",
             "timeline_highlight": 0,
             "map_content": 0
         },
         "19": {
-            "information": "President was in Texas on a campaign tour and gave speech.",
-            "_3dpath": "sphinx",
+            "information": "# First Lady\n**Jacqueline Kennedy** was born on <u>July 28, 1929</u>, in New York City. She was educated at Georgetown University and the Salk Institute, and throughout her life she showed a deep interest in art and culture. She and Kennedy were married on <u>September 12, 1953</u>, in Newport, Rhode Island. The couple experienced many challenges and honors together in the following years. After the assassination of President Kennedy, she married Greek shipowner [Aristotle Onassis](https://en.wikipedia.org/wiki/Aristotle_Onassis) in <u>1968</u> and became an international socialite.",
+            "_3dpath": "LadyOfMalta",
             "timeline_highlight": 0,
             "map_content": 1
         },
         "40": {
-            "information": "President arrived in Dallas.",
+            "information": "**Dallas** is an important commercial and political center in Texas, and Kennedy hoped to meet with business and political leaders here to promote political cooperation and public support in the state. However, he did not expect that this visit would be his last journey. *In fact, President Kennedy did not give any public speeches in Dallas*. Although he participated in some activities after arriving in Dallas, such as reception ceremonies and motorcade parades, ==he did not give a formal speech in public==. He originally planned to give a speech <u>at the Trade Center</u>, but this plan was not realized before the assassination, but his [manuscript](https://www.jfklibrary.org/asset-viewer/archives/jfkpof-048-022#?image_identifier=JFKPOF-048-022-p0001) was preserved.",
             "_3dpath": "sphinx",
             "timeline_highlight": 1,
             "map_content": 1
         },
         "60": {
-            "information": "Join the Parade.",
+            "information": "# Join the Parade\n",
             "_3dpath": "sphinx",
             "timeline_highlight": 2,
             "map_content": 1
         },
         "93": {
-            "information": "President was shot.",
+            "information": "# President was shot\n",
             "_3dpath": "sphinx",
             "timeline_highlight": 3,
             "map_content": 1
         },
         "135": {
-            "information": "President is dead.",
+            "information": "# President is dead\n",
             "_3dpath": "sphinx",
             "timeline_highlight": 4,
             "map_content": 1
         },
         "180": {
-            "information": "The suspect was arrested.",
+            "information": "# The suspect was arrested\n",
             "_3dpath": "sphinx",
             "timeline_highlight": 5,
             "map_content": 1
         },
         "193": {
-            "information": "Johnson was sworn in as president",
+            "information": "# Johnson was sworn in as president\n",
             "_3dpath": "sphinx",
             "timeline_highlight": 6,
             "map_content": 1
         },
         "248": {
-            "information": "The president’s body lies in repose.",
+            "information": "# The president’s body lies in repose\n",
             "_3dpath": "sphinx",
             "timeline_highlight": 7,
             "map_content": 1
         },
         "318": {
-            "information": "Oswald was being transferred to the country jail and then dead.",
+            "information": "# Oswald was being transferred to the country jail and then dead\n",
             "_3dpath": "sphinx",
             "timeline_highlight": 8,
             "map_content": 1
         },
         "336": {
-            "information": "President’s casket lies in state in the U.S. Capitol.",
+            "information": "# President’s casket lies in state in the U.S. Capitol\n",
             "_3dpath": "sphinx",
             "timeline_highlight": 8,
             "map_content": 1
         },
         "364": {
-            "information": "Funeral was held and where.",
+            "information": "# Funeral was held and where\n",
             "_3dpath": "sphinx",
             "timeline_highlight": 9,
             "map_content": 1
         },
         "447": {
-            "information": "In west Germany, there was an out poring of grief for kennedy.",
+            "information": "# In west Germany, there was an out poring of grief for kennedy\n",
             "_3dpath": "sphinx",
             "timeline_highlight": 9,
             "map_content": 1
         },
         "584": {
-            "information": "End ...",
+            "information": "# End\n",
             "_3dpath": "sphinx",
             "timeline_highlight": 10,
             "map_content": 1
