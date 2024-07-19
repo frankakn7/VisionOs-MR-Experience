@@ -172,8 +172,14 @@ struct DocumentaryView: View {
     var isLastMediaItem: Bool {
         appState.mediaItems.last == mediaItem
     }
+    
+    private func pauseVideo() {
+            player?.pause()
+        }
 
     private func goBack() {
+        // Force pause video playback before switching videos to prevent other view loading errors
+        pauseVideo()
         guard let index = appState.mediaItems.firstIndex(of: mediaItem) else { return }
         guard index > 0 else { return }
         appState.updateSelectedMediaItem(appState.mediaItems[index - 1])
@@ -181,6 +187,8 @@ struct DocumentaryView: View {
     }
 
     private func goForward() {
+        // Force pause video playback before switching videos to prevent other view loading errors
+        pauseVideo()
         guard let index = appState.mediaItems.firstIndex(of: mediaItem) else { return }
         guard index < appState.mediaItems.count - 1 else { return }
         appState.updateSelectedMediaItem(appState.mediaItems[index + 1])

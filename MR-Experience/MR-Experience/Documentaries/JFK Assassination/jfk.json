@@ -2,13 +2,13 @@
     "timestamps": {
         "0": {
             "information": "# Biography\n**John Fitzgerald Kennedy**, commonly known as JFK, *was born on May 29, 1917 in Brookline, Massachusetts*. He was the 35th President of the United States. He was inaugurated on <u>January 20, 1961</u>, and served until his assassination on <u>November 22, 1963</u>.---# Presidency\nKennedy's most notable achievement was the proposal of the ==\"Moon Landing Program\"== in <u>1961</u>, which culminated in <u>1969</u>. He also managed major Cold War crises. For example: \n- ==Cuban Missile Crisis==\n- ==Civil Rights Movement==\n---# Assassination\nKennedy was **assassinated** on <u>November 22, 1963</u>, during a visit to Dallas, Texas. While riding in an open-top car through Dealey Plaza in downtown Dallas, he was shot and fatally wounded, dying shortly thereafter at Parkland Hospital.*The assassination shocked the world and sparked numerous conspiracy theories and investigations.* [The Warren Commission](https://en.wikipedia.org/wiki/Warren_Commission) subsequently investigated the assassination and concluded that **Lee Harvey Oswald** was the sole assassin.",
-            "_3dpath": "Sphinx3D",
+            "_3dpath": "Flora",
             "timeline_highlight": 0,
             "map_content": 0
         },
         "19": {
             "information": "# First Lady\n**Jacqueline Kennedy** was born on <u>July 28, 1929</u>, in New York City. She was educated at Georgetown University and the Salk Institute, and throughout her life she showed a deep interest in art and culture. She and Kennedy were married on <u>September 12, 1953</u>, in Newport, Rhode Island. The couple experienced many challenges and honors together in the following years. After the assassination of President Kennedy, she married Greek shipowner [Aristotle Onassis](https://en.wikipedia.org/wiki/Aristotle_Onassis) in <u>1968</u> and became an international socialite.",
-            "_3dpath": "LadyOfMalta",
+            "_3dpath": "sphinx",
             "timeline_highlight": 0,
             "map_content": 1
         },
