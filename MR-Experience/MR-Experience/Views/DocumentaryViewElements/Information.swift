@@ -7,7 +7,7 @@
 
 import SwiftUI
 import UIKit
-
+/// A view displays text
 struct Information: View {
     let informationText: String
     var body: some View {
@@ -18,7 +18,7 @@ struct Information: View {
         .padding()
     }
 }
-// Define a struct that conforms to UIViewRepresentable to represent a UITextView
+/// Define a struct that conforms to UIViewRepresentable to represent a UITextView
 struct AttributedTextView: UIViewRepresentable {
     // Property to hold the attributed string to be displayed
     var attributedString: NSAttributedString
@@ -31,7 +31,7 @@ struct AttributedTextView: UIViewRepresentable {
         return text
     }
 
-    // Method to update the view with new data
+    /// Method to update the view with new data
     func updateUIView(_ uiView: UITextView, context: Context) {
         // Set the attributed text for the text view
         uiView.attributedText = attributedString
@@ -42,7 +42,7 @@ struct AttributedTextView: UIViewRepresentable {
 
 
 
-// Function to create an attributed string from a markdown-like input string
+/// Create an attributed string from a markdown-like input string
 func MarkdownUI(inputString: String) -> NSAttributedString {
     // Define regex patterns for various markdown elements
     let boldRegexPattern = "\\*{2}(.*?)\\*{2}"
@@ -189,7 +189,7 @@ func MarkdownUI(inputString: String) -> NSAttributedString {
     }
 }
 
-// Extension to convert a UIView to UIImage
+/// Extension to convert a UIView to UIImage
 extension UIView {
     func asImage() -> UIImage {
         let renderer = UIGraphicsImageRenderer(bounds: bounds)

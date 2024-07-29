@@ -11,8 +11,8 @@ import AVKit
 /// A view representing a documentary experience for a specific `MediaItem`.
 struct DocumentaryView: View {
     @EnvironmentObject var appState: AppState
-    @Environment(\.openWindow) var openWindow
-    @Environment(\.dismissWindow) var dismissWindow
+    @Environment(\.openWindow) var openWindow                   // Declare an environment variable `openWindow` to open the window
+    @Environment(\.dismissWindow) var dismissWindow             // Declare an environment variable `dismissWindow` to close the window
     
     let mediaItem: MediaItem                                    // The media item associated with this documentary view
     
@@ -98,26 +98,32 @@ struct DocumentaryView: View {
             // bottom toolbar
                 HStack {
                     Button(action: {
+                        // Return to the previous MediaItem
                         goBack()
                     }) {
                         Image(systemName: "arrow.backward")
                     }
+                    // Disable the button if it is the first media item
                     .disabled(isFirstMediaItem)
                     
                     Button(action: {
+                        // Return to the MediaSelectionView
                         backToMediaSelection()
                     }) {
                         Image(systemName: "house")
                     }
                     
                     Button(action: {
+                        // Go to the next MediaItem
                         goForward()
                     }) {
                         Image(systemName: "arrow.forward")
                     }
+                    // Disable the button if it is the last media item
                     .disabled(isLastMediaItem)
                 }
             }
+        // When mediaItem changes, an asynchronous task is triggered to respond to the change of mediaItem and dynamically update its displayed content
         .task(id: mediaItem) {
             resetState()
             loadMarkers()
@@ -166,17 +172,19 @@ struct DocumentaryView: View {
     }
     
     var isFirstMediaItem: Bool {
+        // Determine whether it is the first MediaItem
         appState.mediaItems.first == mediaItem
     }
 
     var isLastMediaItem: Bool {
+        // Determine whether it is the last MediaItem
         appState.mediaItems.last == mediaItem
     }
-    
+    /// Pause the video
     private func pauseVideo() {
             player?.pause()
         }
-
+    /// Return to the previous MediaItem
     private func goBack() {
         // Force pause video playback before switching videos to prevent other view loading errors
         pauseVideo()
@@ -185,17 +193,17 @@ struct DocumentaryView: View {
         appState.updateSelectedMediaItem(appState.mediaItems[index - 1])
         isLoading = true
     }
-
+    /// Return to the next MediaItem
     private func goForward() {
-        // Force pause video playback before switching videos to prevent other view loading errors
         pauseVideo()
         guard let index = appState.mediaItems.firstIndex(of: mediaItem) else { return }
         guard index < appState.mediaItems.count - 1 else { return }
         appState.updateSelectedMediaItem(appState.mediaItems[index + 1])
         isLoading = true
     }
-
+    /// Return to the MediaSelectionView
     private func backToMediaSelection() {
+        // Return to MediaSelectionView
         appState.updateSelectedMediaItem(nil)
         openWindow(id: "MediaSelectionWindow")
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -204,10 +212,10 @@ struct DocumentaryView: View {
     }
 
     private func resetState() {
-        markerData = nil
-        currentInformation = ""
-        current3DPath = ""
-        currentMapElement = nil
+        markerData = nil                // Reset markerData
+        currentInformation = ""         // Reset currentInformation
+        current3DPath = ""              // Reset current3DPath
+        currentMapElement = nil         // Reset currentMapElement
     }
     
     /// Handles the selection of a timestamp from the timeline and updates the player position accordingly.
