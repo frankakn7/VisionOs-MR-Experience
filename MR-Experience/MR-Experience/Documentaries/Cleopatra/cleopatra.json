@@ -1,61 +1,61 @@
 {
     "timestamps": {
         "0": {
-            "information": "# Cleopatra\n**bold**\n*italics*\nUnordered list: - 111\n- 222\n- 333\ndividing line⬇️\n---\nHyperlink text: [TUBerlin](https://www.tu.berlin)\n<u>underline</u>\n==highlighting==\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111",
+            "information": "# Introduction\n**Cleopatra VII Philopator** (69-30 BC) was the last ruler of Egypt's [Ptolemaic Kingdom](https://en.wikipedia.org/wiki/Ptolemaic_Kingdom), famed for her intellect and political savvy. Educated in <u>Greek and Egyptian</u>, she ascended to power at 18, initially as co-regent with her brother before taking full control, sparking political turmoil. Under her rule, Egypt balanced alliances with Rome through ==Julius Caesar== and ==Mark Antony==, securing its sovereignty. Her romance with Caesar and alliance with Antony led to conflict with ==Octavian==, culminating in their defeat at [the Battle of Actium](https://en.wikipedia.org/wiki/Battle_of_Actium) and their suicides. *Cleopatra's legacy endures as a symbol of Egyptian strength and cultural allure, inspiring art, literature, and film, solidifying her as a captivating figure in history.*",
             "_3dpath": "Flora",
             "timeline_highlight": 0,
             "map_content": 0
         },
         "12": {
-            "information": "Introduce Bloodline.",
+            "information": "# Bloodline\nCleopatra VII was part of [the Ptolemaic dynasty](https://en.wikipedia.org/wiki/Ptolemaic_dynasty), <u>a Macedonian Greek royal family</u> that ruled Egypt for nearly three centuries. Her immediate family included:\n- ==Father==: **Ptolemy XII Auletes**, who ruled Egypt until his <u>death in 51 BC</u>. He faced challenges from rival factions and Roman interference during his reign.\n- ==Mother==: **Likely Cleopatra V Tryphaena**, though details about her are sparse.\n- ==Siblings==: Cleopatra had several siblings, including **Ptolemy XIII**, with whom she initially co-ruled Egypt before asserting her authority.\n",
             "_3dpath": "LadyOfMalta",
             "timeline_highlight": 0,
             "map_content": 1
         },
         "90": {
-            "information": "Events of her Early years.",
+            "information": "# Early Years\nFluent in <u>Greek and Egyptian</u>, Cleopatra VII studied <u>philosophy, rhetoric, and administration</u>, essential for her role as a future ruler. Her education instilled a deep understanding of moral principles and effective communication skills, crucial in navigating political complexities. Cleopatra's ability to speak Egyptian endeared her to her subjects, enhancing her political legitimacy.\nHer upbringing in Alexandria's intellectual milieu exposed her to diverse disciplines, shaping her into a formidable leader known for her intelligence and diplomatic prowess.",
             "_3dpath": "LadyOfMalta",
             "timeline_highlight": 0,
             "map_content": 1
         },
         "164": {
-            "information": "After the Death of her Father.",
+            "information": "# Co-regency\nFollowing the ==death of their father==, **Ptolemy XII Eurates**, in <u>51 BC</u>, Cleopatra VII and her brother, **Ptolemy XIII**, were named **co-rulers** of Egypt. However, Cleopatra quickly asserted her authority, leading to political tensions that culminated in her brother's attempts to sideline her. <u>In 48 BC</u>, Cleopatra was forced **into exile** following a dispute with Ptolemy XIII's advisors and allies, including the [eunuch Pausanias](https://de.wikipedia.org/wiki/Pausanias_(Sparta)) and [the general Achillas](https://en.wikipedia.org/wiki/Achillas).",
             "_3dpath": "Flora",
             "timeline_highlight": 1,
             "map_content": 1
         },
         "313": {
-            "information": "In Exile.",
+            "information": "# In Exile\n",
             "_3dpath": "Flora",
             "timeline_highlight": 2,
             "map_content": 1
         },
         "378": {
-            "information": "Cleopatra and Julious Caesar.",
+            "information": "# Cleopatra and Julious Caesar\n",
             "_3dpath": "Flora",
             "timeline_highlight": 3,
             "map_content": 1
         },
         "478": {
-            "information": "Death of Julious Caesar.",
+            "information": "# Death of Julious Caesar\n",
             "_3dpath": "Flora",
             "timeline_highlight": 4,
             "map_content": 1
         },
         "539": {
-            "information": "Mark Antony.",
+            "information": "# Mark Antony\n",
             "_3dpath": "Flora",
             "timeline_highlight": 5,
             "map_content": 1
         },
         "636": {
-            "information": "Battle of Actium.",
+            "information": "# Battle of Actium\n",
             "_3dpath": "Flora",
             "timeline_highlight": 6,
             "map_content": 1
         },
         "734": {
-            "information": "Death of Cleopatra.",
+            "information": "# Death of Cleopatra\n**Cleopatra**\n*italics*\nUnordered list: - 111\n- 222\n- 333\ndividing line⬇️\n---\nHyperlink text: [TUBerlin](https://www.tu.berlin)\n<u>underline</u>\n==highlighting==\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111",
             "_3dpath": "Flora",
             "timeline_highlight": 7,
             "map_content": 1
