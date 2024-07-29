@@ -203,6 +203,7 @@ struct DocumentaryView: View {
     }
     /// Return to the MediaSelectionView
     private func backToMediaSelection() {
+        pauseVideo()
         // Return to MediaSelectionView
         appState.updateSelectedMediaItem(nil)
         openWindow(id: "MediaSelectionWindow")
