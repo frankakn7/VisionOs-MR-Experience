@@ -43,7 +43,7 @@ struct MR_ExperienceApp: App {
         .windowStyle(.plain)
         .defaultSize(width: 1.2, height: 0.48, depth: 0.0, in: .meters)
         
-        //3D Object in seperate window view
+        //Interactable 3D Object in seperate window view
         WindowGroup(id: "3dObjectVolumetric"){
             VolumetricThreeDObject(isOpen: $appState.threeDObjectOpened, threeDObjectName: appState.threeDObjectFilePath)
         }
